@@ -27,6 +27,11 @@ Output.prototype.renderResults = function(){
   return template(this);
 };
 
+Output.prototype.renderThumbnails = function(){
+  var template = Handlebars.compile($('#thumbnail-template').text());
+  return template(this);
+};
+
 var view = {};
 view.getInfo = function(data){
   data.forEach(function(item){
@@ -41,7 +46,8 @@ view.getInfo = function(data){
       description:  item.volumeInfo.description,
       ratingsCount: item.volumeInfo.ratingsCount
     });
-    $('#results').append(item.renderResults());
+    // $('#results').append(item.renderResults());
+    $('#results').append(item.renderThumbnails());
   });
 };
 
