@@ -1,31 +1,33 @@
 .book-preview{
-  &:hover{
-    img{
+
+  // float: left;
+  display: inline-block;
+  // box-shadow: 1px 3px 5px #e6e6e6;
+  overflow: hidden;
+  background: #fff;
+  width: 200px;
+  position: relative;
+  margin: 10px 5px;
+  border: 10px solid white;
+  box-sizing: content-box;
+  text-align: center;
+
+  &:hover {
+    img {
       transform :scale(5);
       transition: 1s;
     }
-    .mask{
+    .mask {
       opacity: 1;
       transition: 1s;
     }
   }
-  float: left;
-  display: block;
-  box-shadow: 1px 3px 5px #e6e6e6;
-  overflow:hidden;
-  background: #fff;
-  width: 200px;
-  position:relative;
-  margin: 10px;
-  border: 10px solid white ;
-  box-sizing: content-box;
-  text-align:center;
 
-  img{
+  img {
     width: 200px;
     height: 300px;
   }
-  .mask{
+  .mask {
     overflow:hidden;
     text-align:center;
     width: 100%;
@@ -36,17 +38,20 @@
     top: 0;
     opacity: 0;
     padding: .5rem 0;
-    h2{
+
+    .title {
       width:100%;
       text-align: center;
     }
-    .author{
+
+    .author {
       width: 75%;
       margin: 0 auto;
       border-bottom: 1px solid black;
       padding: .25rem 0;
     }
-    .description{
+
+    .description {
       text-align: left;
       text-indent: 20px;
       text-align: justify;
@@ -55,14 +60,15 @@
       padding: .25rem 0;
 
     }
-    a{
+    a {
       width:50%;
       height: 25px;
       text-decoration: none;
       color: white;
       background: blue;
     }
-    button{
+
+    button {
       position: absolute;;
       bottom: 10px;
       left: 30px;
