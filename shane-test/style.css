@@ -1,0 +1,44 @@
+.clear{
+  clear:both;
+}
+
+.template{
+  margin-top: 20px;
+  margin-bottom:20px;
+  /*outline: 1px solid blue;*/
+  min-height: 250px;
+}
+
+.form{
+  z-index: 2;
+  position: fixed;
+  background-color: white;
+}
+
+#results{
+  position: relative;
+  top: 75px;
+}
+
+img{
+  float: left;
+  margin-right: 10px;
+}
+
+h3, h5, h6{
+  margin-bottom: 5px;
+  padding-bottom: 0;
+}
+
+h3{
+  margin-top: 20px;
+}
+
+h5{
+  margin-top: 5px;
+}
+
+h6{
+  margin: 0;
+  padding: 0;
+}

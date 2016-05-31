@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+    <script id="results-template" type="text/x-handlebars-template">
+      <div class="clear template">
+        <h3>{{bookTitle}}</h3>
+        <img src="{{thumb}}" alt="Book Cover" />
+        <h5>By: {{author}}</h5>
+        <h6>Genre: {{genre}}</h6>
+        <h6>Publisher: {{publisher}}</h6>
+        <h6>ISBN: {{isbn}}</h6>
+        <h7>Total Ratings: {{ratingsCount}}</h7>
+        <h7>Published Date: {{pubDate}}</h7>
+        <p>{{description}}</p>
+      </div>
+    </script>
+  </head>
+  <body>
+    <main>
+      <div class="form">
+      <form action="#" id="form-input">
+        <label for="keyword">Keyword
+          <input type="text" placeholder="Keyword" id="keyword">
+        </label>
+        <label for="book-title">Book Title
+          <input type="text" placeholder="Book Title" id="book-title">
+        </label>
+        <label for="author">Author
+          <input type="text" placeholder="Author" id="author">
+        </label>
+        <label for="genre">Genre
+          <input type="text" placeholder="Genre" id="genre">
+        </label>
+        <label for="publisher">Publisher
+          <input type="text" placeholder="Publisher" id="publisher">
+        </label>
+        <label for="isbn">ISBN
+          <input type="text" placeholder="ISBN" id="isbn">
+        </label>
+        <input type="submit" value="Submit">
+    </form>
+  </div>
+      <div id="results"></div>
+    </main>
+    <script src="jquery-2.1.4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
+    <script src="mostFrequent.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
