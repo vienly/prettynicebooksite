@@ -1,6 +1,9 @@
 // just for testing
-a {
+body {
   -webkit-font-smoothing: antialiased;
+}
+
+a {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: 1.75rem;
@@ -11,4 +14,11 @@ p {
   font-weight: 400;
   font-size: 1rem;
   letter-spacing: 1.5px;
+}
+
+.nav-toggle-button {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1rem;
 }

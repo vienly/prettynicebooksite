@@ -1,10 +1,18 @@
-
+@import 'helpers/mixins';
+@import 'helpers/variables';
 
 @import 'base/reset';
 @import 'base/base';
 @import 'base/typography';
 
 @import 'layout/nav';
+@import 'layout/header';
+@import 'layout/body';
+@import 'layout/footer';
+
+@import 'components/buttons';
+
+
 // order:
 
 // helpers/
