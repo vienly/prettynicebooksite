@@ -1,0 +1,33 @@
+.nav-toggle-button {
+  position: fixed;
+  left: 15px; top: 15px;
+  z-index: 2;
+
+  height: auto;
+  width: auto;
+
+  cursor: pointer;
+
+  background-color: rgba(0, 0, 0 , 0.8);
+  color: white;
+  outline: none;
+  border: none;
+  padding: 5px 5px 5px 5px;
+
+  background-size: contain;
+
+  &.navActive {
+    left: calc(20vw + 15px);
+  }
+
+  transition: left 0.5s;
+}
+
+
+// .nav-toggle-button:checked + label {
+//   left: 215px;
+// }
+
+// .nav-trigger:checked ~ .site-wrap {
+//
+// }

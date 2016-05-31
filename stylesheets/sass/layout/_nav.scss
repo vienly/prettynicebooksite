@@ -1,5 +1,45 @@
-a {
-  text-transform: uppercase;
-  text-decoration: none;
-  color: black;
+// a {
+//   text-transform: uppercase;
+//   text-decoration: none;
+//   color: black;
+// }
+
+.navigation {
+  /* critical sizing and position styles */
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+
+  /* non-critical appearance styles */
+  background: #111;
+}
+
+/* Navigation Menu - List items */
+.nav-item {
+  /* non-critical appearance styles */
+  width: 20vw;
+  border-top: 1px solid #111;
+  border-bottom: 1px solid #000;
+
+  a {
+    /* non-critical appearance styles */
+    display: block;
+    padding: 1em;
+    background: linear-gradient(135deg, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
+    color: white;
+    font-size: 1.2em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s, background 0.5s;
+
+    &:hover {
+      color: #c74438;
+      background: linear-gradient(135deg, rgba(0,0,0,0) 0%,rgba(75,20,20,0.65) 100%);
+    }
+  }
 }
