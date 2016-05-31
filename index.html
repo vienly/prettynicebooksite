@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:100,300,400' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
     <link href="stylesheets/style.css" rel="stylesheet" type="text/css">
 
     <script id="results-template" type="text/x-handlebars-template">
@@ -19,6 +21,18 @@
         <h7>Total Ratings: {{ratingsCount}}</h7>
         <h7>Published Date: {{pubDate}}</h7>
         <p>{{description}}</p>
+      </div>
+    </script>
+
+    <script id="thumbnail-template" type="text/x-handlebars-template">
+      <div class="book book-preview">
+        <img class="thumbnail" src="{{thumb}}"/>
+        <div class="mask">
+          <h2 class="title">{{bookTitle}}</h2>
+          <h5 class="author">{{author}}</h5>
+          <p class="description">{{description}}</p>
+          <button>More Info</button>
+        </div>
       </div>
     </script>
 
