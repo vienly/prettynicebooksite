@@ -8,6 +8,20 @@
     <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:100,300,400' rel='stylesheet' type='text/css'>
     <link href="stylesheets/style.css" rel="stylesheet" type="text/css">
 
+    <script id="results-template" type="text/x-handlebars-template">
+      <div class="clear template">
+        <h3>{{bookTitle}}</h3>
+        <img src="{{thumb}}" alt="Book Cover" />
+        <h5>By: {{author}}</h5>
+        <h6>Genre: {{genre}}</h6>
+        <h6>Publisher: {{publisher}}</h6>
+        <h6>ISBN: {{isbn}}</h6>
+        <h7>Total Ratings: {{ratingsCount}}</h7>
+        <h7>Published Date: {{pubDate}}</h7>
+        <p>{{description}}</p>
+      </div>
+    </script>
+
   </head>
   <body>
     <header class="site-header">
@@ -24,18 +38,38 @@
 
     <div class="site-wrap">
       <main>
-        <p>Vestibulum quis ultricies felis, id euismod nisi. Nullam eleifend mi tortor, ac gravida tellus feugiat a. Donec vitae finibus purus. Mauris a quam non ligula accumsan sagittis eget varius est. Morbi interdum, est sed imperdiet maximus, lorem neque efficitur lacus, semper placerat lorem ligula vel ipsum. Ut ex magna, pretium et semper ac, molestie vel ante. Aliquam ut porta tellus, in maximus purus. Aenean tristique feugiat ante, eu mattis turpis pharetra sed. Donec quis tincidunt sem. Phasellus ullamcorper iaculis nisi, rutrum tristique justo hendrerit in. Curabitur sed ante metus. Pellentesque vitae consequat elit. Proin bibendum nulla sapien, lacinia ultrices nisi tempus ut. Integer ultricies finibus neque vitae iaculis. Phasellus efficitur arcu nibh, at ornare nulla sollicitudin ut. Sed eu lacus vitae ante consequat gravida.</p>
-
-        <p>Aliquam aliquam velit et leo congue, vitae pellentesque metus sollicitudin. Maecenas elementum ligula ac sem cursus, non accumsan orci rutrum. Sed consectetur risus vel pellentesque eleifend. Suspendisse ac varius quam. Aliquam condimentum bibendum ornare. Fusce viverra facilisis ex. Suspendisse feugiat lacinia magna sed imperdiet. Etiam volutpat est in lacus ornare, in varius magna eleifend. In at pharetra lacus, in dignissim dui. Sed a dignissim dolor, quis cursus nisl. Morbi id finibus mauris, ut pulvinar libero.</p>
-
-        <p>Ut et enim rhoncus, pulvinar diam non, sollicitudin justo. In ut consequat lacus. Vivamus volutpat ex id nibh interdum, sit amet mattis purus lacinia. Pellentesque tristique consequat nunc finibus posuere. Vestibulum eget metus non enim tempus elementum sed vitae neque. Phasellus consequat massa at egestas cursus. Mauris sed sagittis ligula. Integer posuere ut nisi et commodo. Maecenas placerat tincidunt ex, quis tincidunt est pulvinar ac. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In hac habitasse platea dictumst. Pellentesque eget aliquet arcu. Vivamus at nunc bibendum, condimentum turpis eget, volutpat lorem. Sed tristique posuere fringilla.</p>
-
-        <p>Sed rutrum nisl facilisis, porttitor ipsum vel, commodo purus. Vestibulum pretium ultrices odio, ut tincidunt felis blandit vitae. Cras elit nulla, porta quis felis quis, sagittis semper justo. Ut non nibh fermentum tellus consectetur ultrices vel mollis felis. Sed efficitur eleifend urna in consectetur. Praesent nec finibus massa. Aenean nibh tortor, finibus in convallis at, pellentesque id eros. Pellentesque sagittis maximus nisl, sit amet viverra nisl finibus sit amet. Etiam fermentum enim non mauris tincidunt, at condimentum urna feugiat. Morbi vitae metus laoreet, aliquam tellus sit amet, interdum erat. Nam varius dignissim diam id porttitor. Fusce laoreet dui ac viverra iaculis. Praesent vel auctor elit. Ut id diam vitae arcu congue venenatis sodales vitae metus. Cras nec malesuada eros, ac mattis urna. Aliquam faucibus lectus ac pretium vestibulum.<p>
-
-        </main>
-      </div>
+        <div class="form">
+          <form action="#" id="form-input">
+            <label for="keyword">Keyword
+              <input type="text" placeholder="Keyword" id="keyword">
+            </label>
+            <label for="book-title">Book Title
+              <input type="text" placeholder="Book Title" id="book-title">
+            </label>
+            <label for="author">Author
+              <input type="text" placeholder="Author" id="author">
+            </label>
+            <label for="genre">Genre
+              <input type="text" placeholder="Genre" id="genre">
+            </label>
+            <label for="publisher">Publisher
+              <input type="text" placeholder="Publisher" id="publisher">
+            </label>
+            <label for="isbn">ISBN
+              <input type="text" placeholder="ISBN" id="isbn">
+            </label>
+            <input type="submit" value="Submit">
+          </form>
+        </div>
+        <div id="results"></div>
+      </main>
+    </div>
 
       <script src="scripts/vendors/jquery-2.2.4.min.js"></script>
+      <script src="scripts/vendors/handlebars.js"></script>
+
       <script src="scripts/nav.js"></script>
+      <script src="shane-test/mostFrequent.js"></script>
+      <script src="shane-test/app.js"></script>
   </body>
 </html>
