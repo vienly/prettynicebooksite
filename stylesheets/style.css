@@ -109,9 +109,9 @@ p {
 
 .site-wrap {
   /* Critical position and size styles */
-  transition: left 0.5s;
+  display: inline-block;
   min-height: 100vh;
-  min-width: 100%;
+  min-width: 100vw;
   background-color: white;
   /* Needs a background or else the nav will show through */
   position: relative;
@@ -121,12 +121,23 @@ p {
   z-index: 1;
   /* non-critical apperance styles */
   padding: 4em;
-  background-size: 200%; }
+  transition: left 0.5s; }
   .site-wrap p {
     margin: 0 0 1rem 0; }
   .site-wrap.navActive {
     left: 20vw;
     box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5); }
+
+main {
+  text-align: center; }
+
+#results {
+  width: 75vw;
+  height: auto;
+  display: inline-block;
+  background-color: black;
+  margin: 0 auto;
+  text-align: center; }
 
 .nav-toggle-button {
   position: fixed;
@@ -146,15 +157,16 @@ p {
   .nav-toggle-button.navActive {
     left: calc(20vw + 15px); }
 
+.submit-button {
+  margin: 20px; }
+
 .book-preview {
-  float: left;
-  display: block;
-  box-shadow: 1px 3px 5px #e6e6e6;
+  display: inline-block;
   overflow: hidden;
   background: #fff;
   width: 200px;
   position: relative;
-  margin: 10px;
+  margin: 10px 5px;
   border: 10px solid white;
   box-sizing: content-box;
   text-align: center; }
@@ -178,7 +190,7 @@ p {
     top: 0;
     opacity: 0;
     padding: .5rem 0; }
-    .book-preview .mask h2 {
+    .book-preview .mask .title {
       width: 100%;
       text-align: center; }
     .book-preview .mask .author {
