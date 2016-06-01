@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 var filteredArray = [];
 var goodreadsData;
 var retData = [];
@@ -6,9 +5,6 @@ var retData = [];
 var view = {};
 var currentResult = [];
 
-=======
-<<<<<<< HEAD
->>>>>>> 11ae695e39826f47cf026e4b965a17a05afec4b2
 function Input (opts) {
   for (keys in opts) {
     this[keys] = opts[keys];
@@ -42,7 +38,6 @@ function Output(bookInfo) {
   this.grRecommendations = [];
 }
 
-<<<<<<< HEAD
 // var formInput = new Input({
 //   keyword:        $('#keyword').val().replace(/\W+/g, '+'),
 //   bookTitle:      $('#book-title').val(),
@@ -53,12 +48,7 @@ function Output(bookInfo) {
 // });
 
 var formInput;
-
-function createNewInput(){
-=======
-var formInput;
 newInput = function(){
->>>>>>> 11ae695e39826f47cf026e4b965a17a05afec4b2
   formInput = new Input({
     keyword:        $('#keyword').val().replace(/\W+/g, '+'),
     bookTitle:      $('#book-title').val(),
@@ -84,24 +74,19 @@ Output.prototype.renderThumbnails = function(){
   return template(this);
 };
 
-<<<<<<< HEAD
-view.getInfo = function(data){
-  console.log(data);
-  currentResult = [];
-=======
 var view = {};
 var currentResult = [];
 
 view.getInfo = function(data){
   console.log(data);
->>>>>>> 11ae695e39826f47cf026e4b965a17a05afec4b2
-  data.forEach(function(item){
+  data.forEach(function(item) {
     var tempt = new Output(item);
     currentResult.push(tempt);
 
     // $('#results').append(tempt.renderResults());
     $('#results').append(tempt.renderThumbnails());
   });
+
 };
 
 var createEndpoint = function(){
@@ -115,13 +100,6 @@ var createEndpoint = function(){
   return newUrl;
 };
 
-<<<<<<< HEAD
-=======
-var filteredArray = [];
-var goodreadsData;
-var retData = [];
-
->>>>>>> 11ae695e39826f47cf026e4b965a17a05afec4b2
 ajaxCall = function(e){
   e.preventDefault();
   $('#results').empty();
@@ -147,10 +125,6 @@ ajaxCall = function(e){
       });
     }
   }).done(function() {
-<<<<<<< HEAD
-=======
-
->>>>>>> 11ae695e39826f47cf026e4b965a17a05afec4b2
     view.getInfo(retData);
   });
 };
@@ -181,18 +155,6 @@ goodreadsCall = function(idx) {
 };
 
 showStuff = function(ref){
-<<<<<<< HEAD
-  // $('#results').hide();
-  $('#book-details').empty().siblings().hide();
-  // console.log(ref);
-  $('#book-details').append(ref.renderMoreInfo());
-  ref.grRecommendations.forEach(function(item){
-    $('#book-details').append(item.renderRecommendation());
-  });
-};
-
-$('#form-input').on('change', createNewInput);
-=======
   $('#results').empty();
   // console.log(ref);
   $('#results').append(ref.renderMoreInfo());
@@ -202,7 +164,6 @@ $('#form-input').on('change', createNewInput);
 };
 
 $('#form-input').on('change', newInput);
->>>>>>> 11ae695e39826f47cf026e4b965a17a05afec4b2
 $('#form-input').on('submit', ajaxCall);
 $('#results').on('click', 'div', function(){
   console.log($(this).index());
