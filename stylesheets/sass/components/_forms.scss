@@ -1,4 +1,22 @@
-#form {
-  margin: 20px;
+form{
+  width: 75%;
+  margin: 0 auto;
+  h1{
+    font-size: 4rem;
+    margin-bottom: 50px;
+  }
+
+  p {
+    font-size: 2rem;
+  }
+
+  input{
+    outline: 0;
+    border: none;
+    border-bottom: 1px solid black;
+    font-size: 2rem;
+    width: 200px;
+    text-align: center;
+
   }
 }

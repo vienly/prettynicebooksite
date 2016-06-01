@@ -67,8 +67,8 @@ view.getInfo = function(data){
     var tempt = new Output(item);
     currentResult.push(tempt);
 
-    $('#results').append(tempt.renderResults());
-    // $('#results').append(item.renderThumbnails());
+    // $('#results').append(tempt.renderResults());
+    $('#results').append(tempt.renderThumbnails());
   });
 };
 
