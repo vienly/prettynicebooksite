@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 function Input (opts) {
   for (keys in opts) {
     this[keys] = opts[keys];
