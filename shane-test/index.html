@@ -14,9 +14,30 @@
         <h6>ISBN: {{isbn}}</h6>
         <h7>Total Ratings: {{ratingsCount}}</h7>
         <h7>Published Date: {{pubDate}}</h7>
+        <!-- <h8>Goodreads Average Rating: {{grRating}}</h8> -->
         <p>{{description}}</p>
+        <!-- <h4>If you liked this book, you'll love these!</h4> -->
+        <img src="{{grRecs}}" alt="We recommend this book too!" />
       </div>
     </script>
+
+    <script id="detail-template" type="text/x-handlebars-template">
+      <div class="clear template">
+        <h3>{{bookTitle}}</h3>
+        <h8>Goodreads Average Rating: {{grRating}}</h8>
+        <img src="{{grRecs}}" alt="We recommend this book too!" />
+      </div>
+    </script>
+
+    <script id="rec-template" type="text/x-handlebars-template">
+      <div class="clear template">
+        <h3><a href="{{grlink}}">{{title}}</a></h3>
+        <h8>Goodreads Average Rating: {{rating}}</h8>
+        <img src="{{thumbnail}}" alt="We recommend this book too!" />
+        <p>{{isbn}}</p>
+      </div>
+    </script>
+
   </head>
   <body>
     <main>
