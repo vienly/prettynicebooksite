@@ -41,9 +41,6 @@ table {
 body {
   overflow-x: hidden; }
 
-body {
-  -webkit-font-smoothing: antialiased; }
-
 a {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
@@ -135,7 +132,6 @@ main {
   width: 75vw;
   height: auto;
   display: inline-block;
-  background-color: black;
   margin: 0 auto;
   text-align: center; }
 
@@ -158,10 +154,33 @@ main {
     left: calc(20vw + 15px); }
 
 .submit-button {
-  margin: 20px; }
+  width: 200px;
+  height: 50px;
+  background: white;
+  border: 3px solid black;
+  padding: 0px;
+  font-size: 1rem;
+  margin-top: 25px; }
+
+form {
+  width: 75%;
+  margin: 0 auto; }
+  form h1 {
+    font-size: 4rem;
+    margin-bottom: 50px; }
+  form p {
+    font-size: 2rem; }
+  form input {
+    outline: 0;
+    border: none;
+    border-bottom: 1px solid black;
+    font-size: 2rem;
+    width: 200px;
+    text-align: center; }
 
 .book-preview {
   display: inline-block;
+  box-shadow: 1px 3px 5px #e6e6e6;
   overflow: hidden;
   background: #fff;
   width: 200px;
