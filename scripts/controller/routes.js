@@ -1,0 +1,2 @@
+page('/',
+  searchController.index);

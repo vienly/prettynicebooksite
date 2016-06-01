@@ -36,6 +36,23 @@
       </div>
     </script>
 
+    <script id="detail-template" type="text/x-handlebars-template">
+      <div class="clear template">
+        <h3>{{bookTitle}}</h3>
+        <h8>Goodreads Average Rating: {{grRating}}</h8>
+        <img src="{{grRecs}}" alt="We recommend this book too!" />
+      </div>
+    </script>
+
+    <script id="rec-template" type="text/x-handlebars-template">
+      <div class="clear template">
+        <h3><a href="{{grlink}}">{{title}}</a></h3>
+        <h8>Goodreads Average Rating: {{rating}}</h8>
+        <img src="{{thumbnail}}" alt="We recommend this book too!" />
+        <p>{{isbn}}</p>
+      </div>
+    </script>
+
   </head>
   <body>
     <header class="site-header">
@@ -76,14 +93,14 @@
           </form>
         </div>
         <div id="results"></div>
+        <div id="book-details"></div>
       </main>
     </div>
 
       <script src="scripts/vendors/jquery-2.2.4.min.js"></script>
       <script src="scripts/vendors/handlebars.js"></script>
 
-      <script src="scripts/nav.js"></script>
-      <script src="shane-test/mostFrequent.js"></script>
+      <script src="scripts/view/nav.js"></script>
       <script src="shane-test/app.js"></script>
   </body>
 </html>
