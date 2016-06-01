@@ -38,6 +38,18 @@
       </div>
     </script>
 
+    <script id="thumbnail-template" type="text/x-handlebars-template">
+      <div class="book book-preview">
+        <img class="thumbnail" src="{{thumb}}"/>
+        <div class="mask">
+          <h2 class="title">{{bookTitle}}</h2>
+          <h5 class="author">{{author}}</h5>
+          <p class="description">{{description}}</p>
+          <button>More Info</button>
+        </div>
+      </div>
+    </script>
+
   </head>
   <body>
     <main>
