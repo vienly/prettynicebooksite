@@ -79,6 +79,7 @@ var currentResult = [];
 
 view.getInfo = function(data){
   console.log(data);
+  currentResult = [];
   data.forEach(function(item) {
     var tempt = new Output(item);
     currentResult.push(tempt);
@@ -165,7 +166,7 @@ showStuff = function(ref){
 
 $('#form-input').on('change', newInput);
 $('#form-input').on('submit', ajaxCall);
-$('#results').on('click', 'div', function(){
+$('#results').on('click', '.book', function(){
   console.log($(this).index());
   // console.log(retData[$(this).index()]);
   goodreadsCall(currentResult[$(this).index()]);
