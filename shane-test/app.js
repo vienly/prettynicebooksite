@@ -156,11 +156,11 @@ goodreadsCall = function(idx) {
 };
 
 showStuff = function(ref){
-  $('#results').empty();
+  $('#book-details').empty().siblings().hide();
   // console.log(ref);
-  $('#results').append(ref.renderMoreInfo());
+  $('#book-details').append(ref.renderMoreInfo());
   ref.grRecommendations.forEach(function(item){
-    $('#results').append(item.renderRecommendation());
+    $('#book-details').append(item.renderRecommendation());
   });
 };
 
