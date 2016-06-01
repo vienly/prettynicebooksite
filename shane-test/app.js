@@ -4,10 +4,31 @@ function Input (opts) {
   };
 }
 
-function Output (opts) {
-  for (keys in opts) {
-    this[keys] = opts[keys];
-  };
+function GRRec(input) {
+  this.title = input.title;
+  this.grlink = input.link;
+  this.rating = input.average_rating;
+  this.thumbnail = input.image_url;
+  this.isbn = input.isbn;
+}
+
+GRRec.prototype.renderRecommendation = function() {
+  var template = Handlebars.compile($('#rec-template').text());
+  return template(this);
+};
+
+function Output(bookInfo) {
+  this.bookTitle = bookInfo.volumeInfo.title;
+  this.thumb = bookInfo.volumeInfo.imageLinks.thumbnail;
+  this.author = bookInfo.volumeInfo.authors;
+  this.genre = bookInfo.volumeInfo.categories;
+  this.publisher = bookInfo.volumeInfo.publisher;
+  this.pubDate = bookInfo.volumeInfo.publishedDate;
+  this.isbn = bookInfo.volumeInfo.industryIdentifiers[0].identifier;
+  this.description = bookInfo.volumeInfo.description;
+  this.ratingsCount = bookInfo.volumeInfo.ratingsCount;
+  this.grRating = 0;
+  this.grRecommendations = [];
 }
 
 var formInput;
@@ -27,34 +48,26 @@ Output.prototype.renderResults = function(){
   return template(this);
 };
 
+Output.prototype.renderMoreInfo = function(){
+  var template = Handlebars.compile($('#detail-template').text());
+  return template(this);
+};
+
 Output.prototype.renderThumbnails = function(){
   var template = Handlebars.compile($('#thumbnail-template').text());
   return template(this);
 };
 
 var view = {};
+var currentResult = [];
+
 view.getInfo = function(data){
+  console.log(data);
   data.forEach(function(item){
-    item = new Output({
-      bookTitle:    item.volumeInfo.title,
-      thumb:        item.volumeInfo.imageLinks.thumbnail,
-      author:       item.volumeInfo.authors,
-      genre:        item.volumeInfo.categories,
-      publisher:    item.volumeInfo.publisher,
-      pubDate:      item.volumeInfo.publishedDate,
-      isbn:         item.volumeInfo.industryIdentifiers[0].identifier,
-      description:  item.volumeInfo.description,
-      ratingsCount: item.volumeInfo.ratingsCount,
-      grRating:     item.volumeInfo.goodreadsRating,
-      grRecs:       [
-        item.volumeInfo.recommendations,
-        // item.volumeInfo.recommendations,
-        // item.volumeInfo.recommendations
-      ],
-      // grRecTwo:     item.volumeInfo.recommendations[1],
-      // grRecThree:   item.volumeInfo.recommendations[2]
-    });
-    $('#results').append(item.renderResults());
+    var tempt = new Output(item);
+    currentResult.push(tempt);
+
+    $('#results').append(tempt.renderResults());
     // $('#results').append(item.renderThumbnails());
   });
 };
@@ -72,76 +85,76 @@ var createEndpoint = function(){
 
 var filteredArray = [];
 var goodreadsData;
-var retData;
+var retData = [];
+
 ajaxCall = function(e){
   e.preventDefault();
   $('#results').empty();
   var endpoint = createEndpoint();
-  // console.log(endpoint);
   $.ajax({
     url: endpoint
-    // 'https://www.googleapis.com/books/v1/volumes' +
-    // ?q=wise+inauthor:rothfuss&?key=AIzaSyCfsM3QeTqrabiuQ1f97bB7pawjROuhhv0',
     + '&maxResults=40'
     + '&?key=AIzaSyCfsM3QeTqrabiuQ1f97bB7pawjROuhhv0',
     type: 'GET',
     success: function(data) {
-      // console.log(data.items);
-      retData = data;
-      // var mostFrequentPub = mostFrequent(data.items);
-      // console.log('most frequent publisher: ' + mostFrequentPub);
-      var ret = data.items.filter(function(item){
+      // retData = data;
+      retData = data.items.filter(function(item){
         if(item.volumeInfo.ratingsCount > 10
           && item.accessInfo.country === 'US'
           && item.volumeInfo.language == 'en'
           && item.volumeInfo.imageLinks
           && item.volumeInfo.publishedDate
-          && item.volumeInfo.industryIdentifiers[0].identifier
+          && item.volumeInfo.publisher
+          && item.volumeInfo.industryIdentifiers.length
         ){
-          filteredArray.push(item);
+          return item;
         }
       });
-      filteredArray.map(function(item){
-        url = 'https://www.goodreads.com/book/isbn/' +
-        item.volumeInfo.industryIdentifiers[0].identifier +
-        '?key=LbvqOGqzxlFouQJ4ow48w';
-        $.get('https://query.yahooapis.com/v1/public/yql',
-          {
-            q: 'select * from xml where url=\'' + url + '\'',
-            format: 'json'
-          },
-        function(json){
-          goodreadsData = json;
-          item.volumeInfo.goodreadsRating = goodreadsData.query.results.GoodreadsResponse.book.average_rating;
-          item.volumeInfo.recommendations = [
-            goodreadsData.query.results.GoodreadsResponse.book.similar_books.book[0].image_url,
-            goodreadsData.query.results.GoodreadsResponse.book.similar_books.book[1].image_url,
-            goodreadsData.query.results.GoodreadsResponse.book.similar_books.book[2].image_url
-          ];
-        }
-      );
-      });
-      // view.getInfo(filteredArray);
-      // .sort((function(a,b){
-      //   // console.log('b ratings: ' + b.volumeInfo.ratingsCount, 'a ratings: ' + a.volumeInfo.ratingsCount);
-      //   return b.volumeInfo.ratingsCount - a.volumeInfo.ratingsCount;
-      // }));
-      // view.getInfo(filteredArray);
-      // .reduce(function(a, arr){
-      //   if (arr.length > 0){
-      //     return arr.indexOf(a) !== -1;
-      //   }
-      //   console.log(arr);
-      // }, []);
-      // .filter(function(item) {
-      //   return item.volumeInfo.publisher && item.volumeInfo.publisher === (mostFrequentPub.toString());
-      // })
-
     }
-  }
-);
-  view.getInfo(filteredArray);
+  }).done(function() {
+
+    view.getInfo(retData);
+  });
+};
+
+goodreadsCall = function(idx) {
+  console.log(idx);
+  var myUrl = 'https://www.goodreads.com/book/isbn/' +
+  idx.isbn +
+  '?key=LbvqOGqzxlFouQJ4ow48w';
+  $.get('https://query.yahooapis.com/v1/public/yql',{
+    q: 'select * from xml where url=\'' + myUrl + '\'',
+    format: 'json'
+  },
+  function(json){
+    goodreadsData = json;
+    console.log(goodreadsData);
+    idx.grRecommendations = [];
+    idx.goodreadsRating = goodreadsData.query.results.GoodreadsResponse.book.average_rating;
+
+    goodreadsData.query.results.GoodreadsResponse.book.similar_books.book.filter(function(item) {
+      return item.isbn && item.image_url != 'https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png';
+    }).forEach(function (item) {
+      var tempt = new GRRec(item);
+      idx.grRecommendations.push(tempt);
+    });
+    showStuff(idx);
+  });
+};
+
+showStuff = function(ref){
+  $('#results').empty();
+  // console.log(ref);
+  $('#results').append(ref.renderMoreInfo());
+  ref.grRecommendations.forEach(function(item){
+    $('#results').append(item.renderRecommendation());
+  });
 };
 
 $('#form-input').on('change', newInput);
 $('#form-input').on('submit', ajaxCall);
+$('#results').on('click', 'div', function(){
+  console.log($(this).index());
+  // console.log(retData[$(this).index()]);
+  goodreadsCall(currentResult[$(this).index()]);
+});
