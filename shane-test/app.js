@@ -44,10 +44,18 @@ view.getInfo = function(data){
       pubDate:      item.volumeInfo.publishedDate,
       isbn:         item.volumeInfo.industryIdentifiers[0].identifier,
       description:  item.volumeInfo.description,
-      ratingsCount: item.volumeInfo.ratingsCount
+      ratingsCount: item.volumeInfo.ratingsCount,
+      grRating:     item.volumeInfo.goodreadsRating,
+      grRecs:       [
+        item.volumeInfo.recommendations,
+        // item.volumeInfo.recommendations,
+        // item.volumeInfo.recommendations
+      ],
+      // grRecTwo:     item.volumeInfo.recommendations[1],
+      // grRecThree:   item.volumeInfo.recommendations[2]
     });
-    // $('#results').append(item.renderResults());
-    $('#results').append(item.renderThumbnails());
+    $('#results').append(item.renderResults());
+    // $('#results').append(item.renderThumbnails());
   });
 };
 
@@ -62,6 +70,8 @@ var createEndpoint = function(){
   return newUrl;
 };
 
+var filteredArray = [];
+var goodreadsData;
 var retData;
 ajaxCall = function(e){
   e.preventDefault();
@@ -85,15 +95,38 @@ ajaxCall = function(e){
           && item.accessInfo.country === 'US'
           && item.volumeInfo.language == 'en'
           && item.volumeInfo.imageLinks
-          && item.volumeInfo.publishedDate){
-          return item;
+          && item.volumeInfo.publishedDate
+          && item.volumeInfo.industryIdentifiers[0].identifier
+        ){
+          filteredArray.push(item);
         }
       });
+      filteredArray.map(function(item){
+        url = 'https://www.goodreads.com/book/isbn/' +
+        item.volumeInfo.industryIdentifiers[0].identifier +
+        '?key=LbvqOGqzxlFouQJ4ow48w';
+        $.get('https://query.yahooapis.com/v1/public/yql',
+          {
+            q: 'select * from xml where url=\'' + url + '\'',
+            format: 'json'
+          },
+        function(json){
+          goodreadsData = json;
+          item.volumeInfo.goodreadsRating = goodreadsData.query.results.GoodreadsResponse.book.average_rating;
+          item.volumeInfo.recommendations = [
+            goodreadsData.query.results.GoodreadsResponse.book.similar_books.book[0].image_url,
+            goodreadsData.query.results.GoodreadsResponse.book.similar_books.book[1].image_url,
+            goodreadsData.query.results.GoodreadsResponse.book.similar_books.book[2].image_url
+          ];
+        }
+      );
+      });
+      // view.getInfo(filteredArray);
       // .sort((function(a,b){
       //   // console.log('b ratings: ' + b.volumeInfo.ratingsCount, 'a ratings: ' + a.volumeInfo.ratingsCount);
       //   return b.volumeInfo.ratingsCount - a.volumeInfo.ratingsCount;
       // }));
-      view.getInfo(ret);
+      // view.getInfo(filteredArray);
       // .reduce(function(a, arr){
       //   if (arr.length > 0){
       //     return arr.indexOf(a) !== -1;
@@ -107,27 +140,8 @@ ajaxCall = function(e){
     }
   }
 );
+  view.getInfo(filteredArray);
 };
-
-
-//Goodreads ++++++++++++++++++++++
-
-// var url = "https://www.goodreads.com/book/isbn/0613496744?key=LbvqOGqzxlFouQJ4ow48w";
-//
-// $.get("https://query.yahooapis.com/v1/public/yql",
-//     {
-//         q: "select * from xml where url=\""+url+"\"",
-//         format: "json"
-//     },
-//     function(json){
-//         // contains XML with the following structure:
-//         // <query>
-//         //   <results>
-//         //     <GoodreadsResponse>
-//         //        ...
-//         console.log(json);
-//     }
-// );
 
 $('#form-input').on('change', newInput);
 $('#form-input').on('submit', ajaxCall);
