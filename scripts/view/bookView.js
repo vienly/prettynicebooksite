@@ -19,8 +19,8 @@
   };
 
   bookView.showBookDetails = function(book){
-    $('#results').fadeOut();
-    $('#book-details').empty();
+    // $('#results').fadeOut();
+    // $('#book-details').empty();
 
     $('#book-details').append(render(book, '#detail-template'));
 
@@ -28,7 +28,7 @@
       $('#book-details').append(render(recommendedBook, '#rec-template'));
     });
 
-    $('.book-detail-backdrop').fadeIn().children().fadeIn();;
+    $('.book-detail-backdrop').fadeIn().children().fadeIn();
   };
 
   bookView.handleSearchInput = function() {
@@ -37,16 +37,35 @@
       e.preventDefault();
       $('#form-input').on('submit', page('/search/' + bookModel.createEndpoint()));
     });
+  };
 
+  bookView.handleClickBook = function() {
     $('#results').on('click', '.book', function(){
       console.log($(this).index());
       bookModel.requestGoodReadsData(bookModel.all[$(this).index()]);
+    });
+
+    $('.book-details').on('scroll', function() {
+      var distance = $(this).scrollTop();
+      $('.close-details').css('top', distance);
+    });
+
+    $('.close-details').on('click', function() {
+      console.log('closing');
+      $('.close-details').siblings().remove();
+      $('.book-detail-backdrop').fadeOut().children().fadeOut();
     });
   };
 
   bookView.initIndexPage = function() {
     $('main').children().hide();
     $('.form').fadeIn();
+
+    // $('.book-details').on('scroll', function() {
+    //   var distance = $(this).scrollTop();
+    //   $('.close-details').css('top', distance);
+    // });
+
     bookView.handleSearchInput();
   };
 
