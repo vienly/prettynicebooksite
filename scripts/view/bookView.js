@@ -69,5 +69,10 @@
     bookView.handleSearchInput();
   };
 
+  bookView.initTeamPage = function(){
+    $('main').children().hide();
+    $('.container-fluid').fadeIn();
+  };
+
   module.bookView = bookView;
 })(window);
