@@ -9,7 +9,6 @@ page('/test', function() {
 });
 
 page('/search/:searchQuery', function(ctx) {
-  bookView.handleSearchInput();
   bookModel.requestGoogleBooksData(null, ctx.params.searchQuery);
 });
 

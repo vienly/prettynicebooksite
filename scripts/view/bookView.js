@@ -16,6 +16,7 @@
 
   bookView.showBookDetails = function(book){
     $('#results').fadeOut();
+    $('#book-details').empty();
 
     $('#book-details').append(render(book, '#detail-template'));
 
