@@ -2,6 +2,7 @@
   var bookModel = {};
   bookModel.all = [];
   bookModel.GBdata = [];
+  bookModel.formInput;
 
   function Input (opts) {
     for (keys in opts) {
@@ -18,7 +19,7 @@
     this.pubDate = bookInfo.volumeInfo.publishedDate;
     this.isbn = bookInfo.volumeInfo.industryIdentifiers[0].identifier;
     this.description = bookInfo.volumeInfo.description;
-    this.shortDescription = this.description.substring(0, 250) + '...';
+    if(this.description) { this.shortDescription = this.description.substring(0, 250) + '...'; }
     this.ratingsCount = bookInfo.volumeInfo.ratingsCount;
     this.grRating = 0;
     this.grRecommendations = [];
@@ -32,9 +33,8 @@
     this.isbn = input.isbn;
   }
 
-  var formInput;
   bookModel.createNewInput = function(){
-    formInput = new Input({
+    bookModel.formInput = new Input({
       keyword:        $('#keyword').val().replace(/\W+/g, '+'),
       bookTitle:      $('#book-title').val(),
       author:         $('#author').val(),
@@ -45,28 +45,32 @@
   };
 
   // make endpoint for GB API req
-  var createEndpoint = function(){
-    var newUrl = 'https://www.googleapis.com/books/v1/volumes?q=';
-    if (formInput.keyword) { newUrl += formInput.keyword; }
-    if (formInput.bookTitle) { newUrl += '+intitle:' + formInput.bookTitle; }
-    if (formInput.author) { newUrl += '+inauthor:' + formInput.author; }
-    if (formInput.genre) { newUrl += '+insubject:' + formInput.genre; }
-    if (formInput.publisher) { newUrl += '+inpublisher:' + formInput.publisher; }
-    if (formInput.isbn) { newUrl += '+inisbn:' + formInput.isbn; }
+  bookModel.createEndpoint = function(){
+    var newUrl = '';
+    if (bookModel.formInput.keyword) { newUrl += bookModel.formInput.keyword; }
+    if (bookModel.formInput.bookTitle) { newUrl += '+intitle:' + bookModel.formInput.bookTitle; }
+    if (bookModel.formInput.author) { newUrl += '+inauthor:' + bookModel.formInput.author; }
+    if (bookModel.formInput.genre) { newUrl += '+insubject:' + bookModel.formInput.genre; }
+    if (bookModel.formInput.publisher) { newUrl += '+inpublisher:' + bookModel.formInput.publisher; }
+    if (bookModel.formInput.isbn) { newUrl += '+inisbn:' + bookModel.formInput.isbn; }
     return newUrl;
   };
 
   // make ajax call to GB API
-  bookModel.requestGoogleBooksData = function(e){
-    e.preventDefault();
+  bookModel.requestGoogleBooksData = function(e, endPoint){
+    if(e) {
+      e.preventDefault();
+    }
     $('#results').empty();
-    var endpoint = createEndpoint();
+    var newUrl = 'https://www.googleapis.com/books/v1/volumes?q=';
+    newUrl += endPoint;
     $.ajax({
-      url: endpoint
+      url: newUrl
       + '&maxResults=40'
       + '&?key=AIzaSyCfsM3QeTqrabiuQ1f97bB7pawjROuhhv0',
       type: 'GET',
       success: function(data) {
+        console.log(data);
         if(data.items) {
           bookModel.GBdata = data.items.filter(function(item){
             if(item.volumeInfo.ratingsCount > 10
@@ -75,7 +79,7 @@
               && item.volumeInfo.imageLinks
               && item.volumeInfo.publishedDate
               && item.volumeInfo.publisher
-              && item.volumeInfo.industryIdentifiers.length
+              && item.volumeInfo.industryIdentifiers
             ){
               return item;
             }
@@ -87,6 +91,7 @@
     }).done(function() {
       importBooks(bookModel.GBdata);
       bookView.showResults(bookModel.all);
+      bookView.handleClickBook();
     });
   };
 
@@ -113,7 +118,7 @@
     function(responseData){
       console.log(responseData);
 
-      if(responseData.query.results.GoodreadsResponse) {
+      if(responseData.query.results.GoodreadsResponse.book.similar_books) {
         selectedBook.grRecommendations = [];
         selectedBook.goodreadsRating = responseData.query.results.GoodreadsResponse.book.average_rating;
 
@@ -123,11 +128,11 @@
           var recBook = new GRRec(item);
           selectedBook.grRecommendations.push(recBook);
         });
-        bookView.showBookDetails(selectedBook);
       } else {
         console.log('NO GOODREADS DATA');
         // render only the book details and not the recommendations here
       }
+      bookView.showBookDetails(selectedBook);
     });
   };
 

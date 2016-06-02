@@ -41,35 +41,42 @@ table {
 body {
   overflow-x: hidden; }
 
+* {
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1em;
+  letter-spacing: 1.5px; }
+
 a {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  font-size: 1.75rem; }
+  font-size: 1.75em; }
 
 p {
   font-family: 'Alegreya Sans', sans-serif;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 1em;
   letter-spacing: 1.5px; }
 
 .nav-toggle-button {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 1rem; }
+  font-size: 1em; }
 
 .book-preview h2 {
   font-family: 'PT Sans Narrow', sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.25em;
   font-weight: 700;
   text-transform: uppercase; }
 .book-preview h5 {
   font-family: 'PT Sans Narrow', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.1em;
   font-weight: 700; }
 .book-preview p {
   font-family: 'PT Serif', serif;
-  font-size: .8rem; }
+  font-size: .8em; }
 
 .navigation {
   /* critical sizing and position styles */
@@ -87,7 +94,7 @@ p {
 /* Navigation Menu - List items */
 .nav-item {
   /* non-critical appearance styles */
-  width: 20vw;
+  width: 200px;
   border-top: 1px solid #111;
   border-bottom: 1px solid #000; }
   .nav-item a {
@@ -101,14 +108,13 @@ p {
     text-transform: uppercase;
     transition: color 0.2s, background 0.5s; }
     .nav-item a:hover {
-      color: #c74438;
-      background: linear-gradient(135deg, transparent 0%, rgba(75, 20, 20, 0.65) 100%); }
+      color: #c74438; }
 
 .site-wrap {
   /* Critical position and size styles */
   display: inline-block;
   min-height: 100vh;
-  min-width: 100vw;
+  min-width: 100%;
   background-color: white;
   /* Needs a background or else the nav will show through */
   position: relative;
@@ -117,16 +123,17 @@ p {
   left: 0;
   z-index: 1;
   /* non-critical apperance styles */
-  padding: 4em;
+  padding-top: 4em;
   transition: left 0.5s; }
   .site-wrap p {
     margin: 0 0 1rem 0; }
   .site-wrap.navActive {
-    left: 20vw;
+    left: 200px;
     box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5); }
 
 main {
-  text-align: center; }
+  text-align: center;
+  margin: 0 auto; }
 
 #results {
   width: 75vw;
@@ -151,7 +158,8 @@ main {
   background-size: contain;
   transition: left 0.5s; }
   .nav-toggle-button.navActive {
-    left: calc(20vw + 15px); }
+    left: 215px;
+    color: #c74438; }
 
 .submit-button {
   width: 200px;
@@ -161,6 +169,12 @@ main {
   padding: 0px;
   font-size: 1rem;
   margin-top: 25px; }
+
+.close-details {
+  position: absolute;
+  color: red;
+  top: 0;
+  left: 0; }
 
 form {
   width: 75%;
@@ -230,5 +244,27 @@ form {
       text-decoration: none;
       color: white;
       background: blue; }
+
+.book-detail-backdrop {
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10; }
+  .book-detail-backdrop .book-details {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    position: relative;
+    background-color: white;
+    height: 90%;
+    width: 50%;
+    margin: 0 auto;
+    opacity: 1;
+    z-index: 20;
+    overflow: scroll; }
 
 /*# sourceMappingURL=style.css.map */

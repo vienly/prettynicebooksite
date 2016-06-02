@@ -3,7 +3,7 @@
   display: inline-block;
 
   min-height: 100vh;
-  min-width: 100vw;
+  min-width: 100%;
   background-color: white; /* Needs a background or else the nav will show through */
   position: relative;
   top: 0;
@@ -12,7 +12,7 @@
   z-index: 1;
 
   /* non-critical apperance styles */
-  padding: 4em;
+  padding-top: 4em;
   transition: left 0.5s;
 
   p {
@@ -20,13 +20,14 @@
   }
 
   &.navActive {
-    left: 20vw;
+    left: 200px;
     box-shadow: 0 0 5px 5px rgba(0,0,0,0.5);
   }
 }
 
 main {
   text-align: center;
+  margin: 0 auto;
 }
 
 #results {
