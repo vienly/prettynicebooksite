@@ -19,7 +19,7 @@
     this.pubDate = bookInfo.volumeInfo.publishedDate;
     this.isbn = bookInfo.volumeInfo.industryIdentifiers[0].identifier;
     this.description = bookInfo.volumeInfo.description;
-    this.shortDescription = this.description.substring(0, 250) + '...';
+    if(this.description) { this.shortDescription = this.description.substring(0, 250) + '...'; }
     this.ratingsCount = bookInfo.volumeInfo.ratingsCount;
     this.grRating = 0;
     this.grRecommendations = [];
@@ -70,6 +70,7 @@
       + '&?key=AIzaSyCfsM3QeTqrabiuQ1f97bB7pawjROuhhv0',
       type: 'GET',
       success: function(data) {
+        console.log(data);
         if(data.items) {
           bookModel.GBdata = data.items.filter(function(item){
             if(item.volumeInfo.ratingsCount > 10
@@ -78,7 +79,7 @@
               && item.volumeInfo.imageLinks
               && item.volumeInfo.publishedDate
               && item.volumeInfo.publisher
-              && item.volumeInfo.industryIdentifiers.length
+              && item.volumeInfo.industryIdentifiers
             ){
               return item;
             }

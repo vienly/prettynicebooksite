@@ -9,6 +9,7 @@ page('/test', function() {
 });
 
 page('/search/:searchQuery', function(ctx) {
+  
   bookModel.requestGoogleBooksData(null, ctx.params.searchQuery);
 });
 
