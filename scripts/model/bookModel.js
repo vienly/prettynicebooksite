@@ -18,6 +18,7 @@
     this.pubDate = bookInfo.volumeInfo.publishedDate;
     this.isbn = bookInfo.volumeInfo.industryIdentifiers[0].identifier;
     this.description = bookInfo.volumeInfo.description;
+    this.shortDescription = this.description.substring(0, 250) + '...';
     this.ratingsCount = bookInfo.volumeInfo.ratingsCount;
     this.grRating = 0;
     this.grRecommendations = [];
