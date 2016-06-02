@@ -53,7 +53,6 @@
     if (bookModel.formInput.genre) { newUrl += '+insubject:' + bookModel.formInput.genre; }
     if (bookModel.formInput.publisher) { newUrl += '+inpublisher:' + bookModel.formInput.publisher; }
     if (bookModel.formInput.isbn) { newUrl += '+inisbn:' + bookModel.formInput.isbn; }
-    console.log(newUrl);
     return newUrl;
   };
 
@@ -62,7 +61,6 @@
     if(e) {
       e.preventDefault();
     }
-    console.log(endPoint);
     $('#results').empty();
     var newUrl = 'https://www.googleapis.com/books/v1/volumes?q=';
     newUrl += endPoint;
@@ -128,11 +126,11 @@
           var recBook = new GRRec(item);
           selectedBook.grRecommendations.push(recBook);
         });
-        bookView.showBookDetails(selectedBook);
       } else {
         console.log('NO GOODREADS DATA');
         // render only the book details and not the recommendations here
       }
+      bookView.showBookDetails(selectedBook);
     });
   };
 
