@@ -1,4 +1,8 @@
-<<<<<<< HEAD
+var retData = [];
+
+var view = {};
+var currentResult = [];
+
 function Input (opts) {
   for (keys in opts) {
     this[keys] = opts[keys];
@@ -59,18 +63,17 @@ Output.prototype.renderThumbnails = function(){
   return template(this);
 };
 
-var view = {};
-var currentResult = [];
-
 view.getInfo = function(data){
   console.log(data);
-  data.forEach(function(item){
+  currentResult = [];
+  data.forEach(function(item) {
     var tempt = new Output(item);
     currentResult.push(tempt);
 
     // $('#results').append(tempt.renderResults());
     $('#results').append(tempt.renderThumbnails());
   });
+
 };
 
 var createEndpoint = function(){
@@ -84,10 +87,6 @@ var createEndpoint = function(){
   return newUrl;
 };
 
-var filteredArray = [];
-var goodreadsData;
-var retData = [];
-
 ajaxCall = function(e){
   e.preventDefault();
   $('#results').empty();
@@ -98,22 +97,24 @@ ajaxCall = function(e){
     + '&?key=AIzaSyCfsM3QeTqrabiuQ1f97bB7pawjROuhhv0',
     type: 'GET',
     success: function(data) {
-      // retData = data;
-      retData = data.items.filter(function(item){
-        if(item.volumeInfo.ratingsCount > 10
-          && item.accessInfo.country === 'US'
-          && item.volumeInfo.language == 'en'
-          && item.volumeInfo.imageLinks
-          && item.volumeInfo.publishedDate
-          && item.volumeInfo.publisher
-          && item.volumeInfo.industryIdentifiers.length
-        ){
-          return item;
-        }
-      });
+      if(data.items) {
+        retData = data.items.filter(function(item){
+          if(item.volumeInfo.ratingsCount > 10
+            && item.accessInfo.country === 'US'
+            && item.volumeInfo.language == 'en'
+            && item.volumeInfo.imageLinks
+            && item.volumeInfo.publishedDate
+            && item.volumeInfo.publisher
+            && item.volumeInfo.industryIdentifiers.length
+          ){
+            return item;
+          }
+        });
+      } else {
+        console.log('no result');
+      }
     }
   }).done(function() {
-
     view.getInfo(retData);
   });
 };
@@ -127,13 +128,12 @@ goodreadsCall = function(idx) {
     q: 'select * from xml where url=\'' + myUrl + '\'',
     format: 'json'
   },
-  function(json){
-    goodreadsData = json;
-    console.log(goodreadsData);
+  function(responseData){
+    console.log(responseData);
     idx.grRecommendations = [];
-    idx.goodreadsRating = goodreadsData.query.results.GoodreadsResponse.book.average_rating;
+    idx.goodreadsRating = responseData.query.results.GoodreadsResponse.book.average_rating;
 
-    goodreadsData.query.results.GoodreadsResponse.book.similar_books.book.filter(function(item) {
+    responseData.query.results.GoodreadsResponse.book.similar_books.book.filter(function(item) {
       return item.isbn && item.image_url != 'https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png';
     }).forEach(function (item) {
       var tempt = new GRRec(item);
@@ -144,18 +144,17 @@ goodreadsCall = function(idx) {
 };
 
 showStuff = function(ref){
-  $('#results').empty();
+  $('#book-details').empty().siblings().hide();
   // console.log(ref);
-  $('#results').append(ref.renderMoreInfo());
+  $('#book-details').append(ref.renderMoreInfo());
   ref.grRecommendations.forEach(function(item){
-    $('#results').append(item.renderRecommendation());
+    $('#book-details').append(item.renderRecommendation());
   });
 };
 
 $('#form-input').on('change', newInput);
 $('#form-input').on('submit', ajaxCall);
-$('#results').on('click', 'div', function(){
+$('#results').on('click', '.book', function(){
   console.log($(this).index());
-  // console.log(retData[$(this).index()]);
   goodreadsCall(currentResult[$(this).index()]);
 });
