@@ -66,7 +66,6 @@
     $('#results').empty();
     var newUrl = 'https://www.googleapis.com/books/v1/volumes?q=';
     newUrl += endPoint;
-    // var endpoint = createEndpoint();
     $.ajax({
       url: newUrl
       + '&maxResults=40'
