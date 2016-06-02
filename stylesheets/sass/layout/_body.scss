@@ -1,18 +1,18 @@
 .site-wrap {
   /* Critical position and size styles */
-  display: block;
+  display: inline-block;
 
-  min-height: 100%;
+  min-height: 100vh;
   min-width: 100%;
   background-color: white; /* Needs a background or else the nav will show through */
   position: relative;
   top: 0;
-  // bottom: 100%;
+  bottom: 100%;
   left: 0;
   z-index: 1;
 
   /* non-critical apperance styles */
-  padding: 4em;
+  padding-top: 4em;
   transition: left 0.5s;
 
   p {

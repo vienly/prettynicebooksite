@@ -45,43 +45,43 @@ body {
   -webkit-font-smoothing: antialiased;
   font-family: 'Alegreya Sans', sans-serif;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 1em;
   letter-spacing: 1.5px; }
 
 a {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  font-size: 1.75rem; }
+  font-size: 1.75em; }
 
 p {
   font-family: 'Alegreya Sans', sans-serif;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 1em;
   letter-spacing: 1.5px; }
 
 .nav-toggle-button {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 1rem; }
+  font-size: 1em; }
 
 .book-preview h2 {
   font-family: 'PT Sans Narrow', sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.25em;
   font-weight: 700;
   text-transform: uppercase; }
 .book-preview h5 {
   font-family: 'PT Sans Narrow', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.1em;
   font-weight: 700; }
 .book-preview p {
   font-family: 'PT Serif', serif;
-  font-size: .8rem; }
+  font-size: .8em; }
 
 .navigation {
   /* critical sizing and position styles */
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   position: fixed;
   top: 0;
   right: 0;
@@ -112,17 +112,18 @@ p {
 
 .site-wrap {
   /* Critical position and size styles */
-  display: block;
-  min-height: 100%;
+  display: inline-block;
+  min-height: 100vh;
   min-width: 100%;
   background-color: white;
   /* Needs a background or else the nav will show through */
   position: relative;
   top: 0;
+  bottom: 100%;
   left: 0;
   z-index: 1;
   /* non-critical apperance styles */
-  padding: 4em;
+  padding-top: 4em;
   transition: left 0.5s; }
   .site-wrap p {
     margin: 0 0 1rem 0; }
