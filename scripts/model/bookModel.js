@@ -99,10 +99,10 @@
   };
 
   // make call to GR API using an input book
-  bookModel.requestGoodReadsData = function(inputBook) {
-    console.log(inputBook);
+  bookModel.requestGoodReadsData = function(selectedBook) {
+    console.log(selectedBook);
     var myUrl = 'https://www.goodreads.com/book/isbn/' +
-    inputBook.isbn +
+    selectedBook.isbn +
     '?key=LbvqOGqzxlFouQJ4ow48w';
     $.get('https://query.yahooapis.com/v1/public/yql',{
       q: 'select * from xml where url=\'' + myUrl + '\'',
@@ -112,17 +112,17 @@
     function(responseData){
       console.log(responseData);
 
-      if(responseData.query.results.GoodReadsResponse) {
-        inputBook.grRecommendations = [];
-        inputBook.goodreadsRating = responseData.query.results.GoodreadsResponse.book.average_rating;
+      if(responseData.query.results.GoodreadsResponse) {
+        selectedBook.grRecommendations = [];
+        selectedBook.goodreadsRating = responseData.query.results.GoodreadsResponse.book.average_rating;
 
         responseData.query.results.GoodreadsResponse.book.similar_books.book.filter(function(item) {
           return item.isbn && item.image_url != 'https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png';
-        }).forEach(function (item) {
-          var tempt = new GRRec(item);
-          inputBook.grRecommendations.push(tempt);
+        }).forEach(function(item) {
+          var recBook = new GRRec(item);
+          selectedBook.grRecommendations.push(recBook);
         });
-        bookView.showBookDetails(inputBook);
+        bookView.showBookDetails(selectedBook);
       } else {
         console.log('NO GOODREADS DATA');
         // render only the book details and not the recommendations here
