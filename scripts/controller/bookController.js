@@ -3,6 +3,7 @@
 
   bookController.index = function() {
     bookView.initIndexPage();
+    navigation.initNavigation();
   };
 
   module.bookController = bookController;
