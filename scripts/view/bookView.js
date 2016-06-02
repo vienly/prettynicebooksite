@@ -8,6 +8,10 @@
   };
 
   bookView.showResults = function(data) {
+    // $('.form').fadeOut();
+    $('#results').empty();
+    $('#results').siblings().fadeOut();
+
     data.forEach(function(item){
       $('#results').append(render(item,'#thumbnail-template'));
     });
@@ -24,7 +28,7 @@
       $('#book-details').append(render(recommendedBook, '#rec-template'));
     });
 
-    $('#book-details').fadeIn();
+    $('.book-detail-backdrop').fadeIn().children().fadeIn();;
   };
 
   bookView.handleSearchInput = function() {
