@@ -9,19 +9,6 @@
     };
   }
 
-  function GRRec(input) {
-    this.title = input.title;
-    this.grlink = input.link;
-    this.rating = input.average_rating;
-    this.thumbnail = input.image_url;
-    this.isbn = input.isbn;
-  }
-
-  GRRec.prototype.renderRecommendation = function() {
-    var template = Handlebars.compile($('#rec-template').text());
-    return template(this);
-  };
-
   function Book(bookInfo) {
     this.bookTitle = bookInfo.volumeInfo.title;
     this.thumb = bookInfo.volumeInfo.imageLinks.thumbnail;
@@ -36,21 +23,13 @@
     this.grRecommendations = [];
   }
 
-
-  Book.prototype.renderResults = function(){
-    var template = Handlebars.compile($('#results-template').text());
-    return template(this);
-  };
-
-  Book.prototype.renderMoreInfo = function(){
-    var template = Handlebars.compile($('#detail-template').text());
-    return template(this);
-  };
-
-  Book.prototype.renderThumbnails = function(){
-    var template = Handlebars.compile($('#thumbnail-template').text());
-    return template(this);
-  };
+  function GRRec(input) {
+    this.title = input.title;
+    this.grlink = input.link;
+    this.rating = input.average_rating;
+    this.thumbnail = input.image_url;
+    this.isbn = input.isbn;
+  }
 
   var formInput;
   bookModel.createNewInput = function(){
@@ -61,14 +40,6 @@
       genre:          $('#genre').val(),
       publisher:      $('#publisher').val(),
       isbn:           $('#isbn').val()
-    });
-  };
-
-  // render the thumbnails
-  // should be view
-  bookModel.getInfo = function(data){
-    data.forEach(function(item) {
-      $('#results').append(item.renderThumbnails());
     });
   };
 
@@ -113,12 +84,17 @@
         }
       }
     }).done(function() {
-      bookModel.all = [];
-      bookModel.GBdata.forEach(function(GBitem) {
-        var newBook = new Book(GBitem);
-        bookModel.all.push(newBook);
-      });
-      bookModel.getInfo(bookModel.all);
+      importBooks(bookModel.GBdata);
+      bookView.showResults(bookModel.all);
+    });
+  };
+
+  // convert data obtained from Google Books into our book Objects
+  var importBooks = function(data) {
+    bookModel.all = [];
+    data.forEach(function(item) {
+      var newBook = new Book(item);
+      bookModel.all.push(newBook);
     });
   };
 
@@ -132,28 +108,25 @@
       q: 'select * from xml where url=\'' + myUrl + '\'',
       format: 'json'
     },
+    // callback that handles goodreads response
     function(responseData){
       console.log(responseData);
-      inputBook.grRecommendations = [];
-      inputBook.goodreadsRating = responseData.query.results.GoodreadsResponse.book.average_rating;
 
-      responseData.query.results.GoodreadsResponse.book.similar_books.book.filter(function(item) {
-        return item.isbn && item.image_url != 'https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png';
-      }).forEach(function (item) {
-        var tempt = new GRRec(item);
-        inputBook.grRecommendations.push(tempt);
-      });
-      showStuff(inputBook);
-    });
-  };
+      if(responseData.query.results.GoodReadsResponse) {
+        inputBook.grRecommendations = [];
+        inputBook.goodreadsRating = responseData.query.results.GoodreadsResponse.book.average_rating;
 
-  // should be view
-  showStuff = function(ref){
-    $('#book-details').empty().siblings().hide();
-    // console.log(ref);
-    $('#book-details').append(ref.renderMoreInfo());
-    ref.grRecommendations.forEach(function(item){
-      $('#book-details').append(item.renderRecommendation());
+        responseData.query.results.GoodreadsResponse.book.similar_books.book.filter(function(item) {
+          return item.isbn && item.image_url != 'https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png';
+        }).forEach(function (item) {
+          var tempt = new GRRec(item);
+          inputBook.grRecommendations.push(tempt);
+        });
+        bookView.showBookDetails(inputBook);
+      } else {
+        console.log('NO GOODREADS DATA');
+        // render only the book details and not the recommendations here
+      }
     });
   };
 

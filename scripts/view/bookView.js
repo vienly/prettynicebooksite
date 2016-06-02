@@ -7,16 +7,24 @@
     return template(item);
   };
 
-  // createNewInput = function(){
-  //   bookView.formInput = new Input({
-  //     keyword:        $('#keyword').val().replace(/\W+/g, '+'),
-  //     bookTitle:      $('#book-title').val(),
-  //     author:         $('#author').val(),
-  //     genre:          $('#genre').val(),
-  //     publisher:      $('#publisher').val(),
-  //     isbn:           $('#isbn').val()
-  //   });
-  // };
+  bookView.showResults = function(data) {
+    data.forEach(function(item){
+      $('#results').append(render(item,'#thumbnail-template'));
+    });
+    $('#results').fadeIn();
+  };
+
+  bookView.showBookDetails = function(book){
+    $('#results').fadeOut();
+
+    $('#book-details').append(render(book, '#detail-template'));
+
+    book.grRecommendations.forEach(function(recommendedBook){
+      $('#book-details').append(render(recommendedBook, '#rec-template'));
+    });
+
+    $('#book-details').fadeIn();
+  };
 
   bookView.handleSearchInput = function() {
     $('#form-input').on('change', bookModel.createNewInput);
@@ -27,7 +35,11 @@
     });
   };
 
-  bookView.handleSearchInput();
+  bookView.initIndexPage = function() {
+    $('main').children().hide();
+    $('.form').fadeIn();
+    bookView.handleSearchInput();
+  };
 
   module.bookView = bookView;
 })(window);
