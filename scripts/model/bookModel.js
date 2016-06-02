@@ -91,7 +91,7 @@
     }).done(function() {
       importBooks(bookModel.GBdata);
       bookView.showResults(bookModel.all);
-      bookView.handleSearchInput();
+      bookView.handleClickBook();
     });
   };
 

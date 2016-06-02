@@ -32,5 +32,12 @@
   padding:0px;
   font-size: 1rem;
   margin-top: 25px;
+}
 
+.close-details {
+  position: absolute;
+  // overflow: none;
+  color: red;
+  top: 0;
+  left: 0;
 }
