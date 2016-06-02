@@ -18,6 +18,7 @@
 
   &.navActive {
     left: 215px;
+    color: #c74438;
   }
 
   transition: left 0.5s;
@@ -31,4 +32,5 @@
   padding:0px;
   font-size: 1rem;
   margin-top: 25px;
+
 }
