@@ -16,6 +16,7 @@
 
   bookView.showBookDetails = function(book){
     $('#results').fadeOut();
+    $('#book-details').empty();
 
     $('#book-details').append(render(book, '#detail-template'));
 
@@ -38,7 +39,6 @@
       bookModel.requestGoodReadsData(bookModel.all[$(this).index()]);
     });
   };
-
 
   bookView.initIndexPage = function() {
     $('main').children().hide();
