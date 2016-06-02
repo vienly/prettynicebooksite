@@ -28,12 +28,17 @@
 
   bookView.handleSearchInput = function() {
     $('#form-input').on('change', bookModel.createNewInput);
-    $('#form-input').on('submit', bookModel.requestGoogleBooksData);
+    $('#form-input').on('submit', function(e) {
+      e.preventDefault();
+      $('#form-input').on('submit', page('/search/' + bookModel.createEndpoint()));
+    });
+
     $('#results').on('click', '.book', function(){
       console.log($(this).index());
       bookModel.requestGoodReadsData(bookModel.all[$(this).index()]);
     });
   };
+
 
   bookView.initIndexPage = function() {
     $('main').children().hide();

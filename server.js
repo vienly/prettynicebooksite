@@ -3,7 +3,7 @@ var requestProxy = require('express-request-proxy'),
   port = process.env.PORT || 3000,
   app = express();
 
-app.use(express.static('/'));
+app.use(express.static('./'));
 
 app.get('*', function(request, response) {
   console.log('New request:', request.url);
