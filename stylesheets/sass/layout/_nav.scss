@@ -6,8 +6,8 @@
 
 .navigation {
   /* critical sizing and position styles */
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   position: fixed;
   top: 0;
   right: 0;
@@ -22,7 +22,7 @@
 /* Navigation Menu - List items */
 .nav-item {
   /* non-critical appearance styles */
-  width: 20vw;
+  width: 200px;
   border-top: 1px solid #111;
   border-bottom: 1px solid #000;
 

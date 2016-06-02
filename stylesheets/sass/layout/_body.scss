@@ -20,13 +20,14 @@
   }
 
   &.navActive {
-    left: 20vw;
+    left: 200px;
     box-shadow: 0 0 5px 5px rgba(0,0,0,0.5);
   }
 }
 
 main {
   text-align: center;
+  margin: 0 auto;
 }
 
 #results {
