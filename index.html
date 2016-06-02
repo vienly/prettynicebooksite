@@ -63,11 +63,11 @@
   <body>
     <header class="site-header">
       <ul class="navigation">
-        <li class="nav-item"><a href="#">Home</a></li>
-        <li class="nav-item"><a href="#">Portfolio</a></li>
-        <li class="nav-item"><a href="#">About</a></li>
+        <li class="nav-item"><a href="/">Home</a></li>
+        <li class="nav-item"><a href="/test">Test</a></li>
+        <li class="nav-item"><a href="/search/123">About</a></li>
         <li class="nav-item"><a href="#">Blog</a></li>
-        <li class="nav-item"><a href="#">Contact</a></li>
+        <li class="nav-item"><a href="/team">Team</a></li>
       </ul>
 
       <button class="nav-toggle-button">Menu</button>
@@ -91,12 +91,16 @@
 
       <script src="scripts/vendors/jquery-2.2.4.min.js"></script>
       <script src="scripts/vendors/handlebars.js"></script>
+      <script src="scripts/vendors/page.js"></script>
 
       <script src="scripts/model/bookModel.js"></script>
+
       <script src="scripts/view/nav.js"></script>
       <script src="scripts/view/bookView.js"></script>
-      <script src="scripts/controller/bookController.js"></script>
 
-      <script>window.bookController.index();</script>
+      <script src="scripts/controller/bookController.js"></script>
+      <script src="scripts/controller/routes.js"></script>
+
+      <!-- <script>window.bookController.index();</script> -->
   </body>
 </html>
