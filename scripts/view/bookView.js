@@ -40,7 +40,6 @@
     });
   };
 
-
   bookView.initIndexPage = function() {
     $('main').children().hide();
     $('.form').fadeIn();
