@@ -17,6 +17,7 @@
   };
 
   bookView.showBookDetails = function(book){
+    $('.close-details').siblings().remove();
     $('#book-details').append(render(book, '#detail-template'));
 
     book.grRecommendations.forEach(function(recommendedBook){
