@@ -7,7 +7,6 @@
     $navButton.on('click', function() {
       $(this).toggleClass('navActive');
       $siteWrapper.toggleClass('navActive');
-      console.log($(this).attr('class'));
     });
   };
 

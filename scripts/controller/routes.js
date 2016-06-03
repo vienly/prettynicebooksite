@@ -1,12 +1,10 @@
 page('/', function() {
-  // console.log('home');
   bookController.index();
 });
 
-page('/test', function() {
+page('/team', function() {
   $('main').children().fadeOut();
   bookView.initTeamPage();
-  // $('.site-wrap').text('testing message');
 });
 
 page('/search/:searchQuery', function(ctx) {
