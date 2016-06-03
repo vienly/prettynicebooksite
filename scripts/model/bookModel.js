@@ -109,7 +109,7 @@
       format: 'json'
     },
     function(responseData){
-      if(responseData.query.results.GoodreadsResponse.book.similar_books) {
+      if(responseData.query.results.GoodreadsResponse && responseData.query.results.GoodreadsResponse.book.similar_books) {
         selectedBook.grRecommendations = [];
         selectedBook.goodreadsRating = responseData.query.results.GoodreadsResponse.book.average_rating;
         responseData.query.results.GoodreadsResponse.book.similar_books.book.filter(function(item) {
