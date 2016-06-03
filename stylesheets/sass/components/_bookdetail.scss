@@ -1,0 +1,35 @@
+.detail{
+  margin:10px;
+  img{
+    float: left;
+  }
+  h3{
+    clear: both;
+    font-size: 3rem;
+  }
+  h5{
+    margin: 10px 0 10px 140px;
+    text-align: left;
+  }
+}
+.rec{
+  clear:both;
+  margin: 2em;
+  h3{
+    font-size: .75rem;
+    margin: 20px;
+    a{
+      text-decoration: none;
+      color:black;
+    }
+  }
+  img{
+    float: left;
+    margin-bottom: 20px; 
+
+  }
+  h4{
+    margin: 20px;
+    font-size: 4rem;
+  }
+}
