@@ -67,15 +67,14 @@ p {
 
 .book-preview h2 {
   font-family: 'PT Sans Narrow', sans-serif;
-  font-size: 1.25em;
+  font-size: 24px;
   font-weight: 700;
   text-transform: uppercase; }
 .book-preview h5 {
   font-family: 'PT Serif', serif;
-  font-size: 1.1em;
-  font-weight: 700; }
+  font-size: 16px; }
 .book-preview p {
-  font-size: .8em; }
+  font-size: 14px; }
 
 .navigation {
   /* critical sizing and position styles */
@@ -178,6 +177,7 @@ main {
     background-color: red; }
 
 .close-details {
+  outline: none;
   position: absolute;
   background: transparent;
   color: red;
@@ -240,13 +240,15 @@ form {
     opacity: 0;
     padding: .5rem 0; }
     .book-preview .mask .title {
-      width: 100%;
+      width: 80%;
+      margin: 0 auto;
       text-align: center; }
     .book-preview .mask .author {
-      width: 75%;
+      width: 80%;
       margin: 0 auto;
       border-bottom: 1px solid black;
-      padding: .25rem 0; }
+      padding: .25rem 0;
+      font-style: italic; }
     .book-preview .mask .description {
       text-align: left;
       text-indent: 20px;
@@ -299,6 +301,8 @@ form {
     margin: 10px 0 10px 150px; }
   .detail .description-detail {
     text-align: justify;
+    font-size: 16px;
+    line-height: 20px;
     padding: 10px;
     margin: 10px; }
   .detail .rec-header {

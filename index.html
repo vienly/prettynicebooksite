@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <title>Prettynicebooksite</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:100,300,400' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
     <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
@@ -18,7 +16,7 @@
         <h6>Genre: {{genre}}</h6>
         <h6>Publisher: {{publisher}}</h6>
         <h6>ISBN: {{isbn}}</h6>
-        <h7>Total Ratings: {{ratingsCount}}</h7>
+        <h7>Popularity: {{ratingsCount}}</h7>
         <h7>Published Date: {{pubDate}}</h7>
         <p>{{description}}</p>
       </div>
@@ -43,20 +41,19 @@
         <p>Genre: {{genre}}</p>
         <p>Publisher: {{publisher}}</p>
         <p>ISBN: {{isbn}}</p>
-        <p>Total Ratings: {{ratingsCount}}</p>
+        <p>Popularity: {{ratingsCount}}</p>
         <p>Published Date: {{pubDate}}</p>
         <p class="description-detail">{{description}}</p>
         <h2 class="rec-header">Recommended Readings</h2>
       </div>
     </script>
 
-
     <script id="rec-template" type="text/x-handlebars-template">
       <div class="clear template rec">
         <h3><a href="{{grlink}}">{{title}}</a></h3>
         <img src="{{thumbnail}}" alt="We recommend this book too!" />
         <h6>Goodreads Average Rating</h6>
-        <h4> {{rating}}</h4>
+        <h4>{{rating}}</h4>
       </div>
     </script>
 

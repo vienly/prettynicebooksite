@@ -30,18 +30,18 @@ p {
 .book-preview {
   h2 {
     font-family: 'PT Sans Narrow', sans-serif;
-    font-size: 1.25em;
+    font-size: 24px;
     font-weight: 700;
     text-transform: uppercase;
   }
 
   h5 {
     font-family: 'PT Serif', serif;
-    font-size: 1.1em;
-    font-weight: 700;
+    font-size: 16px;
+    // font-weight: 400;
   }
 
   p {
-    font-size: .8em;
+    font-size: 14px;
   }
 }

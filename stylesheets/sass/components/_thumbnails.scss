@@ -41,15 +41,17 @@
     padding: .5rem 0;
 
     .title {
-      width:100%;
+      width:80%;
+      margin: 0 auto;
       text-align: center;
     }
 
     .author {
-      width: 75%;
+      width: 80%;
       margin: 0 auto;
       border-bottom: 1px solid black;
       padding: .25rem 0;
+      font-style: italic;
     }
 
     .description {
