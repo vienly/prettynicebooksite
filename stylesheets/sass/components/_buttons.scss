@@ -15,10 +15,11 @@
   padding: 5px 5px 5px 5px;
 
   background-size: contain;
+  transition: 4s;
 
   &.navActive {
     left: 215px;
-    color: #c74438;
+    background-color: red;
   }
 
   transition: left 0.5s;
@@ -27,17 +28,30 @@
 .submit-button{
   width: 200px;
   height: 50px;
-  background: white;
-  border: 3px solid black;
+  background: black;
+  border: none;
   padding:0px;
-  font-size: 1rem;
+  font-size: 1.5rem;
   margin-top: 25px;
+  color:white;
+  &:hover{
+    background-color: red;
+  }
 }
 
 .close-details {
   position: absolute;
-  // overflow: none;
+  background: transparent;
   color: red;
   top: 0;
   left: 0;
+  border: none;
+  font-size: 2em;
+  margin: 0;
+  padding: 0 5px 10px 5px;
+  line-height: .75;
+  &:hover{
+    background: red;
+    color: white;
+  }
 }

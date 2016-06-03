@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>title</title>
+    <title>Prettynicebooksite</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:100,300,400' rel='stylesheet' type='text/css'>
@@ -39,21 +39,23 @@
       <div class="clear template detail">
         <h3>{{bookTitle}}</h3>
         <img src="{{thumb}}" alt="Book Cover" />
-        <h5><strong>By</strong>: {{author}}</h5>
-        <h5>Genre: {{genre}}</h5>
-        <h5>Publisher: {{publisher}}</h5>
-        <h5>ISBN: {{isbn}}</h5>
-        <h5>Total Ratings: {{ratingsCount}}</h5>
-        <h5>Published Date: {{pubDate}}</h5>
-        <p>{{description}}</p>
+        <p><strong>By</strong>: {{author}}</p>
+        <p>Genre: {{genre}}</p>
+        <p>Publisher: {{publisher}}</p>
+        <p>ISBN: {{isbn}}</p>
+        <p>Total Ratings: {{ratingsCount}}</p>
+        <p>Published Date: {{pubDate}}</p>
+        <p class="description-detail">{{description}}</p>
+        <h2 class="rec-header">Recommended Readings</h2>
       </div>
     </script>
+
 
     <script id="rec-template" type="text/x-handlebars-template">
       <div class="clear template rec">
         <h3><a href="{{grlink}}">{{title}}</a></h3>
         <img src="{{thumbnail}}" alt="We recommend this book too!" />
-        <h8>Goodreads Average Rating:</h8>
+        <h6>Goodreads Average Rating</h6>
         <h4> {{rating}}</h4>
       </div>
     </script>
@@ -73,7 +75,7 @@
       <main>
         <div class="form">
           <form action="#" id="form-input">
-            <h1>book</h1>
+            <h1>Book</h1>
             <p>I feel like reading &nbsp;<input type="text" placeholder="Keyword" id="keyword"></P><p>
             by &nbsp;<input type="text" placeholder="Author" id="author"> on the </p><p>subject of &nbsp;
             <input type="text" placeholder="Genre" id="genre">.</p>
@@ -90,7 +92,7 @@
         <div class="container-fluid">
                 <h1>The Team</h1>
                 <div class=" container ">
-                    <img src="http://placehold.it/300x200" class="img-circle">
+                    <img src="images/vien.jpg" class="img-circle">
                     <div  class="mask">
                         <p class="about-name">Vien</p>
                         <p class="about-title">Smart Guy</p>
@@ -99,7 +101,7 @@
                     </div>
                 </div>
                 <div class=" container ">
-                    <img src="http://placehold.it/300x200" class="img-circle">
+                    <img src="images/preet.jpg" class="img-circle">
                     <div  class="mask">
                         <p class="about-name">Gurpreet</p>
                         <p class="about-title">The man</p>
@@ -108,7 +110,7 @@
                     </div>
                 </div>
                 <div class=" container ">
-                    <img src="http://placehold.it/300x200" class="img-circle">
+                    <img src="images/shane.jpg" class="img-circle">
                     <div  class="mask">
                         <p class="about-name">Shane</p>
                         <p class="about-title">Team Lead</p>
@@ -117,7 +119,7 @@
                     </div>
                 </div>
                 <div class=" container ">
-                    <img src="http://placehold.it/300x200" class="img-circle">
+                    <img src="images/shawn.jpg" class="img-circle">
                     <div class="mask">
                         <p class="about-name">Shawn</p>
                         <p class="about-title">css super geek</p>

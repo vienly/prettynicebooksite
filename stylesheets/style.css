@@ -43,24 +43,24 @@ body {
 
 * {
   -webkit-font-smoothing: antialiased;
-  font-family: 'Alegreya Sans', sans-serif;
-  font-weight: 400;
+  font-family: 'PT Sans Narrow', sans-serif;
   font-size: 1em;
+  font-weight: 700;
   letter-spacing: 1.5px; }
 
 a {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'PT Sans Narrow', sans-serif;
   font-weight: 700;
   font-size: 1.75em; }
 
 p {
-  font-family: 'Alegreya Sans', sans-serif;
+  font-family: 'PT Serif', serif;
   font-weight: 400;
   font-size: 1em;
   letter-spacing: 1.5px; }
 
 .nav-toggle-button {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'PT Sans Narrow', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   font-size: 1em; }
@@ -71,11 +71,10 @@ p {
   font-weight: 700;
   text-transform: uppercase; }
 .book-preview h5 {
-  font-family: 'PT Sans Narrow', sans-serif;
+  font-family: 'PT Serif', serif;
   font-size: 1.1em;
   font-weight: 700; }
 .book-preview p {
-  font-family: 'PT Serif', serif;
   font-size: .8em; }
 
 .navigation {
@@ -140,7 +139,11 @@ main {
   height: auto;
   display: inline-block;
   margin: 0 auto;
-  text-align: center; }
+  text-align: center;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 10px 0;
+  margin-bottom: 50px; }
 
 .nav-toggle-button {
   position: fixed;
@@ -156,25 +159,38 @@ main {
   border: none;
   padding: 5px 5px 5px 5px;
   background-size: contain;
+  transition: 4s;
   transition: left 0.5s; }
   .nav-toggle-button.navActive {
     left: 215px;
-    color: #c74438; }
+    background-color: red; }
 
 .submit-button {
   width: 200px;
   height: 50px;
-  background: white;
-  border: 3px solid black;
+  background: black;
+  border: none;
   padding: 0px;
-  font-size: 1rem;
-  margin-top: 25px; }
+  font-size: 1.5rem;
+  margin-top: 25px;
+  color: white; }
+  .submit-button:hover {
+    background-color: red; }
 
 .close-details {
   position: absolute;
+  background: transparent;
   color: red;
   top: 0;
-  left: 0; }
+  left: 0;
+  border: none;
+  font-size: 2em;
+  margin: 0;
+  padding: 0 5px 10px 5px;
+  line-height: .75; }
+  .close-details:hover {
+    background: red;
+    color: white; }
 
 form {
   width: 75%;
@@ -268,28 +284,47 @@ form {
     overflow: scroll; }
 
 .detail {
-  margin: 10px; }
+  margin: 20px; }
   .detail img {
-    float: left; }
+    float: left;
+    margin: 10px;
+    max-height: 150px; }
   .detail h3 {
-    clear: both;
-    font-size: 3rem; }
-  .detail h5 {
-    margin: 10px 0 10px 140px;
-    text-align: left; }
+    clear: left;
+    font-size: 3rem;
+    border-bottom: 1px solid black;
+    padding: 10px; }
+  .detail p {
+    text-align: left;
+    margin: 10px 0 10px 150px; }
+  .detail .description-detail {
+    text-align: justify;
+    padding: 10px;
+    margin: 10px; }
+  .detail .rec-header {
+    width: 100%;
+    background: red;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    padding: 10px; }
 
 .rec {
-  clear: both;
-  margin: 2em; }
+  clear: left;
+  margin: 2em;
+  border-bottom: 1px solid black; }
   .rec h3 {
-    font-size: .75rem;
+    font-size: 1rem;
     margin: 20px; }
     .rec h3 a {
       text-decoration: none;
       color: black; }
   .rec img {
     float: left;
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    max-height: 110px; }
+  .rec h6 {
+    text-align: center; }
   .rec h4 {
     margin: 20px;
     font-size: 4rem; }
@@ -297,11 +332,15 @@ form {
 .container-fluid {
   display: inline-block;
   text-align: center;
-  width: 100%;
-  margin: 0 auto; }
+  width: 90%;
+  margin: 0 auto 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid black; }
   .container-fluid h1 {
     font-size: 3rem;
-    margin: 10px 0 30px 0; }
+    margin: 10px 0 10px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black; }
   .container-fluid .container {
     background: white;
     height: 300px;

@@ -1,27 +1,27 @@
 // just for testing
 * {
   -webkit-font-smoothing: antialiased;
-  font-family: 'Alegreya Sans', sans-serif;
-  font-weight: 400;
+  font-family: 'PT Sans Narrow', sans-serif;
   font-size: 1em;
+  font-weight: 700;
   letter-spacing: 1.5px;
 }
 
 a {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'PT Sans Narrow', sans-serif;
   font-weight: 700;
   font-size: 1.75em;
 }
 
 p {
-  font-family: 'Alegreya Sans', sans-serif;
+  font-family: 'PT Serif', serif;
   font-weight: 400;
   font-size: 1em;
   letter-spacing: 1.5px;
 }
 
 .nav-toggle-button {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'PT Sans Narrow', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   font-size: 1em;
@@ -36,13 +36,12 @@ p {
   }
 
   h5 {
-    font-family: 'PT Sans Narrow', sans-serif;
+    font-family: 'PT Serif', serif;
     font-size: 1.1em;
     font-weight: 700;
   }
 
   p {
-    font-family: 'PT Serif', serif;
     font-size: .8em;
   }
 }
