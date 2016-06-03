@@ -44,7 +44,6 @@
     });
   };
 
-  // make endpoint for GB API req
   bookModel.createEndpoint = function(){
     var newUrl = '';
     if (bookModel.formInput.keyword) { newUrl += bookModel.formInput.keyword; }
@@ -56,7 +55,6 @@
     return newUrl;
   };
 
-  // make ajax call to GB API
   bookModel.requestGoogleBooksData = function(e, endPoint){
     if(e) {
       e.preventDefault();
@@ -70,7 +68,6 @@
       + '&?key=AIzaSyCfsM3QeTqrabiuQ1f97bB7pawjROuhhv0',
       type: 'GET',
       success: function(data) {
-        console.log(data);
         if(data.items) {
           bookModel.GBdata = data.items.filter(function(item){
             if(item.volumeInfo.ratingsCount > 10
@@ -85,7 +82,7 @@
             }
           });
         } else {
-          console.log('no result');
+          console.log('No Result');
         }
       }
     }).done(function() {
@@ -95,7 +92,6 @@
     });
   };
 
-  // convert data obtained from Google Books into our book Objects
   var importBooks = function(data) {
     bookModel.all = [];
     data.forEach(function(item) {
@@ -104,9 +100,7 @@
     });
   };
 
-  // make call to GR API using an input book
   bookModel.requestGoodReadsData = function(selectedBook) {
-    console.log(selectedBook);
     var myUrl = 'https://www.goodreads.com/book/isbn/' +
     selectedBook.isbn +
     '?key=LbvqOGqzxlFouQJ4ow48w';
@@ -114,14 +108,10 @@
       q: 'select * from xml where url=\'' + myUrl + '\'',
       format: 'json'
     },
-    // callback that handles goodreads response
     function(responseData){
-      console.log(responseData);
-
       if(responseData.query.results.GoodreadsResponse.book.similar_books) {
         selectedBook.grRecommendations = [];
         selectedBook.goodreadsRating = responseData.query.results.GoodreadsResponse.book.average_rating;
-
         responseData.query.results.GoodreadsResponse.book.similar_books.book.filter(function(item) {
           return item.isbn && item.image_url != 'https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png';
         }).forEach(function(item) {
@@ -129,8 +119,7 @@
           selectedBook.grRecommendations.push(recBook);
         });
       } else {
-        console.log('NO GOODREADS DATA');
-        // render only the book details and not the recommendations here
+        console.log('No Goodreads Data');
       }
       bookView.showBookDetails(selectedBook);
     });

@@ -1,6 +1,5 @@
 (function(module) {
   var bookView = {};
-  // bookView.formInput;
 
   var render = function(item, templateId) {
     var template = Handlebars.compile($(templateId).text());
@@ -8,7 +7,6 @@
   };
 
   bookView.showResults = function(data) {
-    // $('.form').fadeOut();
     $('#results').empty();
     $('#results').siblings().fadeOut();
 
@@ -19,9 +17,6 @@
   };
 
   bookView.showBookDetails = function(book){
-    // $('#results').fadeOut();
-    // $('#book-details').empty();
-
     $('#book-details').append(render(book, '#detail-template'));
 
     book.grRecommendations.forEach(function(recommendedBook){
@@ -41,7 +36,6 @@
 
   bookView.handleClickBook = function() {
     $('#results').on('click', '.book', function(){
-      console.log($(this).index());
       bookModel.requestGoodReadsData(bookModel.all[$(this).index()]);
     });
 
@@ -51,7 +45,6 @@
     });
 
     $('.close-details').on('click', function() {
-      console.log('closing');
       $('.close-details').siblings().remove();
       $('.book-detail-backdrop').fadeOut().children().fadeOut();
     });
@@ -60,12 +53,6 @@
   bookView.initIndexPage = function() {
     $('main').children().hide();
     $('.form').fadeIn();
-
-    // $('.book-details').on('scroll', function() {
-    //   var distance = $(this).scrollTop();
-    //   $('.close-details').css('top', distance);
-    // });
-
     bookView.handleSearchInput();
   };
 
