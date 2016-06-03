@@ -7,7 +7,7 @@
   };
 
   bookView.showResults = function(data) {
-    $('#results').empty();
+    $('.result-header').siblings().remove();
     $('#results').siblings().fadeOut();
 
     data.forEach(function(item){

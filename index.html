@@ -1,132 +1,134 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Prettynicebooksite</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
-    <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+<head>
+  <meta charset="UTF-8">
+  <title>Prettynicebooksite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='https://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
+  <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
 
-    <script id="results-template" type="text/x-handlebars-template">
-      <div class="clear template">
-        <h3>{{bookTitle}}</h3>
-        <img src="{{thumb}}" alt="Book Cover" />
-        <h5>By: {{author}}</h5>
-        <h6>Genre: {{genre}}</h6>
-        <h6>Publisher: {{publisher}}</h6>
-        <h6>ISBN: {{isbn}}</h6>
-        <h7>Popularity: {{ratingsCount}}</h7>
-        <h7>Published Date: {{pubDate}}</h7>
-        <p>{{description}}</p>
-      </div>
-    </script>
-
-    <script id="thumbnail-template" type="text/x-handlebars-template">
-      <div class="book book-preview">
-        <img class="thumbnail" src="{{thumb}}"/>
-        <div class="mask">
-          <h2 class="title">{{bookTitle}}</h2>
-          <h5 class="author">{{author}}</h5>
-          <p class="description">{{shortDescription}}</p>
-        </div>
-      </div>
-    </script>
-
-    <script id="detail-template" type="text/x-handlebars-template">
-      <div class="clear template detail">
-        <h3>{{bookTitle}}</h3>
-        <img src="{{thumb}}" alt="Book Cover" />
-        <p><strong>By</strong>: {{author}}</p>
-        <p>Genre: {{genre}}</p>
-        <p>Publisher: {{publisher}}</p>
-        <p>ISBN: {{isbn}}</p>
-        <p>Popularity: {{ratingsCount}}</p>
-        <p>Published Date: {{pubDate}}</p>
-        <p class="description-detail">{{description}}</p>
-        <h2 class="rec-header">Recommended Readings</h2>
-      </div>
-    </script>
-
-    <script id="rec-template" type="text/x-handlebars-template">
-      <div class="clear template rec">
-        <h3><a href="{{grlink}}">{{title}}</a></h3>
-        <img src="{{thumbnail}}" alt="We recommend this book too!" />
-        <h6>Goodreads Average Rating</h6>
-        <h4>{{rating}}</h4>
-      </div>
-    </script>
-
-  </head>
-  <body>
-    <header class="site-header">
-      <ul class="navigation">
-        <li class="nav-item"><a href="/">Home</a></li>
-        <li class="nav-item"><a href="/team">Team</a></li>
-      </ul>
-
-      <button class="nav-toggle-button">Menu</button>
-    </header>
-
-    <div class="site-wrap">
-      <main>
-        <div class="form">
-          <form action="#" id="form-input">
-            <h1>Book</h1>
-            <p>I feel like reading &nbsp;<input type="text" placeholder="Keyword" id="keyword"></P><p>
-            by &nbsp;<input type="text" placeholder="Author" id="author"> on the </p><p>subject of &nbsp;
-            <input type="text" placeholder="Genre" id="genre">.</p>
-            <button class="submit-button" type="submit" value="Submit">Submit</button>
-          </form>
-        </div>
-        <div id="results"></div>
-
-        <div class="book-detail-backdrop">
-          <div class="book-details" id="book-details">
-            <button class="close-details">x</button>
-          </div>
-        </div>
-        <div class="container-fluid">
-                <h1>The Team</h1>
-                <div class=" container ">
-                    <img src="images/vien.jpg" class="img-circle">
-                    <div  class="mask">
-                        <p class="about-name">Vien</p>
-                        <p class="about-title">Smart Guy</p>
-                        <a href="#" target="_blank">LinkedIn</a>
-                        <a href="#" target="_blank">Github</a>
-                    </div>
-                </div>
-                <div class=" container ">
-                    <img src="images/preet.jpg" class="img-circle">
-                    <div  class="mask">
-                        <p class="about-name">Gurpreet</p>
-                        <p class="about-title">The man</p>
-                        <a href="#" target="_blank">LinkedIn</a>
-                        <a href="#" target="_blank">Github</a>
-                    </div>
-                </div>
-                <div class=" container ">
-                    <img src="images/shane.jpg" class="img-circle">
-                    <div  class="mask">
-                        <p class="about-name">Shane</p>
-                        <p class="about-title">Team Lead</p>
-                        <a href="#" target="_blank">LinkedIn</a>
-                        <a href="#" target="_blank">Github</a>
-                    </div>
-                </div>
-                <div class=" container ">
-                    <img src="images/shawn.jpg" class="img-circle">
-                    <div class="mask">
-                        <p class="about-name">Shawn</p>
-                        <p class="about-title">css super geek</p>
-                        <a href="#" target="_blank">LinkedIn</a>
-                        <a href="#" target="_blank">Github</a>
-                    </div>
-                </div>
-        </div>
-      </main>
+  <script id="results-template" type="text/x-handlebars-template">
+    <div class="clear template">
+      <h3>{{bookTitle}}</h3>
+      <img src="{{thumb}}" alt="Book Cover" />
+      <h5>By: {{author}}</h5>
+      <h6>Genre: {{genre}}</h6>
+      <h6>Publisher: {{publisher}}</h6>
+      <h6>ISBN: {{isbn}}</h6>
+      <h7>Popularity: {{ratingsCount}}</h7>
+      <h7>Published Date: {{pubDate}}</h7>
+      <p>{{description}}</p>
     </div>
+  </script>
+
+  <script id="thumbnail-template" type="text/x-handlebars-template">
+    <div class="book book-preview">
+      <img class="thumbnail" src="{{thumb}}"/>
+      <div class="mask">
+        <h2 class="title">{{bookTitle}}</h2>
+        <h5 class="author">{{author}}</h5>
+        <p class="description">{{shortDescription}}</p>
+      </div>
+    </div>
+  </script>
+
+  <script id="detail-template" type="text/x-handlebars-template">
+    <div class="clear template detail">
+      <h3>{{bookTitle}}</h3>
+      <img src="{{thumb}}" alt="Book Cover" />
+      <p><strong>By</strong>: {{author}}</p>
+      <p>Genre: {{genre}}</p>
+      <p>Publisher: {{publisher}}</p>
+      <p>ISBN: {{isbn}}</p>
+      <p>Popularity: {{ratingsCount}}</p>
+      <p>Published Date: {{pubDate}}</p>
+      <p class="description-detail">{{description}}</p>
+      <h2 class="rec-header">Recommended Readings</h2>
+    </div>
+  </script>
+
+  <script id="rec-template" type="text/x-handlebars-template">
+    <div class="clear template rec">
+      <h3><a href="{{grlink}}">{{title}}</a></h3>
+      <img src="{{thumbnail}}" alt="We recommend this book too!" />
+      <h6>Goodreads Average Rating</h6>
+      <h4>{{rating}}</h4>
+    </div>
+  </script>
+
+</head>
+<body>
+  <header class="site-header">
+    <ul class="navigation">
+      <li class="nav-item"><a href="/">Home</a></li>
+      <li class="nav-item"><a href="/team">Team</a></li>
+    </ul>
+
+    <button class="nav-toggle-button">Menu</button>
+  </header>
+
+  <div class="site-wrap">
+    <main>
+      <div class="form">
+        <form action="#" id="form-input">
+          <h1>Pretty Nice Books</h1>
+          <p>I feel like reading &nbsp;<input type="text" placeholder="Keyword" id="keyword"></P><p>
+            by &nbsp;<input type="text" placeholder="Author" id="author"> on the </p><p>subject of &nbsp;
+              <input type="text" placeholder="Genre" id="genre">.</p>
+              <button class="submit-button" type="submit" value="Submit">Submit</button>
+            </form>
+          </div>
+          <div id="results">
+            <h3 class="result-header">Search Results</h3>
+          </div>
+
+          <div class="book-detail-backdrop">
+            <div class="book-details" id="book-details">
+              <button class="close-details">x</button>
+            </div>
+          </div>
+          <div class="container-fluid">
+            <h1>The Team</h1>
+            <div class=" container ">
+              <img src="images/vien.jpg" class="img-circle">
+              <div  class="mask">
+                <p class="about-name">Vien</p>
+                <p class="about-title">Smart Guy</p>
+                <a href="#" target="_blank">LinkedIn</a>
+                <a href="https://github.com/vienly" target="_blank">Github</a>
+              </div>
+            </div>
+            <div class=" container ">
+              <img src="images/preet.jpg" class="img-circle">
+              <div  class="mask">
+                <p class="about-name">Gurpreet</p>
+                <p class="about-title">The man</p>
+                <a href="#" target="_blank">LinkedIn</a>
+                <a href="https://github.com/preetsohal" target="_blank">Github</a>
+              </div>
+            </div>
+            <div class=" container ">
+              <img src="images/shane.jpg" class="img-circle">
+              <div  class="mask">
+                <p class="about-name">Shane</p>
+                <p class="about-title">Team Lead</p>
+                <a href="#" target="_blank">LinkedIn</a>
+                <a href="https://github.com/shanehenning" target="_blank">Github</a>
+              </div>
+            </div>
+            <div class=" container ">
+              <img src="images/shawn.jpg" class="img-circle">
+              <div class="mask">
+                <p class="about-name">Shawn</p>
+                <p class="about-title">css super geek</p>
+                <a href="#" target="_blank">LinkedIn</a>
+                <a href="https://github.com/ShaAllFar" target="_blank">Github</a>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
 
       <script src="/scripts/vendors/jquery-2.2.4.min.js"></script>
       <script src="/scripts/vendors/handlebars.js"></script>
@@ -140,5 +142,5 @@
       <script src="/scripts/controller/bookController.js"></script>
       <script src="/scripts/controller/routes.js"></script>
 
-  </body>
-</html>
+    </body>
+    </html>

@@ -59,7 +59,7 @@
     if(e) {
       e.preventDefault();
     }
-    $('#results').empty();
+    $('.result-header').siblings().remove();
     var newUrl = 'https://www.googleapis.com/books/v1/volumes?q=';
     newUrl += endPoint;
     $.ajax({
