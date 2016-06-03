@@ -7,7 +7,7 @@
   };
 
   bookView.showResults = function(data) {
-    $('.result-header').siblings().remove();
+    $('#results').empty();
     $('#results').siblings().fadeOut();
 
     data.forEach(function(item){
@@ -17,6 +17,7 @@
   };
 
   bookView.showBookDetails = function(book){
+    console.log(book);
     $('.close-details').siblings().remove();
     $('#book-details').append(render(book, '#detail-template'));
 
@@ -37,6 +38,7 @@
 
   bookView.handleClickBook = function() {
     $('#results').on('click', '.book', function(){
+      console.log($(this).index());
       bookModel.requestGoodReadsData(bookModel.all[$(this).index()]);
     });
 
