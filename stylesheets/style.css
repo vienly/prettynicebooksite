@@ -267,4 +267,89 @@ form {
     z-index: 20;
     overflow: scroll; }
 
+.detail {
+  margin: 10px; }
+  .detail img {
+    float: left; }
+  .detail h3 {
+    clear: both;
+    font-size: 3rem; }
+  .detail h5 {
+    margin: 10px 0 10px 140px;
+    text-align: left; }
+
+.rec {
+  clear: both;
+  margin: 2em; }
+  .rec h3 {
+    font-size: .75rem;
+    margin: 20px; }
+    .rec h3 a {
+      text-decoration: none;
+      color: black; }
+  .rec img {
+    float: left;
+    margin-bottom: 20px; }
+  .rec h4 {
+    margin: 20px;
+    font-size: 4rem; }
+
+.container-fluid {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto; }
+  .container-fluid h1 {
+    font-size: 3rem;
+    margin: 10px 0 30px 0; }
+  .container-fluid .container {
+    background: white;
+    height: 300px;
+    width: 200px;
+    text-align: center;
+    margin: 10px;
+    display: inline-block;
+    box-shadow: 1px 3px 5px #e6e6e6;
+    transition-duration: 0.2s;
+    transform: scale(1);
+    overflow: hidden;
+    border: 10px solid white; }
+    .container-fluid .container:hover, .container-fluid .container :focus, .container-fluid .container :active {
+      background-color: white;
+      transform: scale(1.1);
+      transition: all .2s ease-in; }
+      .container-fluid .container:hover img, .container-fluid .container :focus img, .container-fluid .container :active img {
+        transform: scale(5);
+        transition: 1s; }
+      .container-fluid .container:hover .mask, .container-fluid .container :focus .mask, .container-fluid .container :active .mask {
+        opacity: 1;
+        transition: 1s; }
+    .container-fluid .container img {
+      height: 280px;
+      width: 180px; }
+    .container-fluid .container .mask {
+      background-color: white;
+      overflow: hidden;
+      text-align: center;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      padding: 30px 10px; }
+      .container-fluid .container .mask .about-name {
+        font-size: 25px;
+        font-weight: 700;
+        margin-bottom: 10px; }
+      .container-fluid .container .mask .about-title {
+        font-size: 15px;
+        font-style: italic;
+        margin-bottom: 20px;
+        color: black; }
+      .container-fluid .container .mask a {
+        padding: 10px;
+        color: black;
+        text-decoration: none; }
+
 /*# sourceMappingURL=style.css.map */

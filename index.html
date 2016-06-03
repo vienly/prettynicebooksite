@@ -31,7 +31,6 @@
           <h2 class="title">{{bookTitle}}</h2>
           <h5 class="author">{{author}}</h5>
           <p class="description">{{shortDescription}}</p>
-          <button>More Info</button>
         </div>
       </div>
     </script>
@@ -40,12 +39,12 @@
       <div class="clear template detail">
         <h3>{{bookTitle}}</h3>
         <img src="{{thumb}}" alt="Book Cover" />
-        <h5>By: {{author}}</h5>
-        <h6>Genre: {{genre}}</h6>
-        <h6>Publisher: {{publisher}}</h6>
-        <h6>ISBN: {{isbn}}</h6>
-        <h7>Total Ratings: {{ratingsCount}}</h7>
-        <h7>Published Date: {{pubDate}}</h7>
+        <h5><strong>By</strong>: {{author}}</h5>
+        <h5>Genre: {{genre}}</h5>
+        <h5>Publisher: {{publisher}}</h5>
+        <h5>ISBN: {{isbn}}</h5>
+        <h5>Total Ratings: {{ratingsCount}}</h5>
+        <h5>Published Date: {{pubDate}}</h5>
         <p>{{description}}</p>
       </div>
     </script>
@@ -53,9 +52,9 @@
     <script id="rec-template" type="text/x-handlebars-template">
       <div class="clear template rec">
         <h3><a href="{{grlink}}">{{title}}</a></h3>
-        <h8>Goodreads Average Rating: {{rating}}</h8>
         <img src="{{thumbnail}}" alt="We recommend this book too!" />
-        <p>{{isbn}}</p>
+        <h8>Goodreads Average Rating:</h8>
+        <h4> {{rating}}</h4>
       </div>
     </script>
 
@@ -64,9 +63,6 @@
     <header class="site-header">
       <ul class="navigation">
         <li class="nav-item"><a href="/">Home</a></li>
-        <li class="nav-item"><a href="/test">Test</a></li>
-        <li class="nav-item"><a href="/search/123">About</a></li>
-        <li class="nav-item"><a href="#">Blog</a></li>
         <li class="nav-item"><a href="/team">Team</a></li>
       </ul>
 
@@ -145,6 +141,5 @@
       <script src="/scripts/controller/bookController.js"></script>
       <script src="/scripts/controller/routes.js"></script>
 
-      <!-- <script>window.bookController.index();</script> -->
   </body>
 </html>
